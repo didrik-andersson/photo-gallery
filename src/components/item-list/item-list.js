@@ -1,11 +1,12 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import { useDialogContext, useItemContext } from "../../contexts/index";
+import { useItemContext } from "../../contexts/index";
+import { Dialog, useDialog } from "../index";
 
 export default function ItemList() {
-  const { toggleItemDetailsDialog } = useDialogContext();
   const { tempData } = useItemContext();
+  const { toggleDialogOpen } = useDialog();
 
   return (
     <Box sx={{ mx: "auto", maxWidth: 1200, overflow: "hidden" }}>
@@ -18,10 +19,13 @@ export default function ItemList() {
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
-              onClick={() => toggleItemDetailsDialog(item.title)}
+              onClick={toggleDialogOpen}
             />
           ))}
       </Masonry>
+      <Dialog toggleFunction={toggleDialogOpen}>
+        <p>Hello lol</p>
+      </Dialog>
     </Box>
   );
 }
