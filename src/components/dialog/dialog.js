@@ -1,16 +1,14 @@
 import React from "react";
 import { Dialog as MuiDialog } from "@mui/material";
-import { useDialog } from "./index";
 
 export default function Dialog({
   fullScreen,
   fullWidth,
   children,
   toggleFunction,
+  open,
 }) {
-  const { dialogOpen } = useDialog();
-
-  console.log(dialogOpen);
+  console.log(open);
 
   return (
     <MuiDialog
@@ -19,7 +17,7 @@ export default function Dialog({
       maxWidth="xl"
       onClose={toggleFunction}
       aria-labelledby="customized-dialog-title"
-      open={dialogOpen}
+      open={open}
     >
       {children}
     </MuiDialog>

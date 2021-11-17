@@ -6,7 +6,7 @@ import { Dialog, useDialog } from "../index";
 
 export default function ItemList() {
   const { tempData } = useItemContext();
-  const { toggleDialogOpen } = useDialog();
+  const { toggleDialogOpen, dialogOpen } = useDialog();
 
   return (
     <Box sx={{ mx: "auto", maxWidth: 1200, overflow: "hidden" }}>
@@ -23,7 +23,7 @@ export default function ItemList() {
             />
           ))}
       </Masonry>
-      <Dialog toggleFunction={toggleDialogOpen}>
+      <Dialog toggleFunction={toggleDialogOpen} open={dialogOpen}>
         <p>Hello lol</p>
       </Dialog>
     </Box>
