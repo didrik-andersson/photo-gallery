@@ -1,15 +1,13 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./index";
-import { DialogProvider, ItemProvider } from "../contexts/index";
+import { ItemProvider } from "../contexts/index";
 
 export default function App() {
   return (
     <BrowserRouter>
       <ItemProvider>
-        <DialogProvider>
-          <Router />
-        </DialogProvider>
+        <Router />
       </ItemProvider>
     </BrowserRouter>
   );

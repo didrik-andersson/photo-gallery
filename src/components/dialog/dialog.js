@@ -4,17 +4,16 @@ import { Dialog as MuiDialog } from "@mui/material";
 export default function Dialog({
   fullScreen,
   fullWidth,
-  children,
-  toggleFunction,
+  maxWidth,
   open,
+  toggleFunction,
+  children,
 }) {
-  console.log(open);
-
   return (
     <MuiDialog
       fullScreen={fullScreen}
       fullWidth={fullWidth}
-      maxWidth="xl"
+      maxWidth={maxWidth}
       onClose={toggleFunction}
       aria-labelledby="customized-dialog-title"
       open={open}
