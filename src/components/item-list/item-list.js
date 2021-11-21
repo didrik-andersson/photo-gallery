@@ -4,7 +4,7 @@ import Masonry from "@mui/lab/Masonry";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useItemContext } from "../../contexts/index";
-import { Dialog, useDialog, ItemDetails } from "../index";
+import { Dialog, useDialog, ItemDetails, ItemDetails2 } from "../index";
 
 export default function ItemList() {
   const { loading, getItems, getItem, items, item } = useItemContext();
@@ -39,12 +39,12 @@ export default function ItemList() {
       {item && (
         <Dialog
           fullScreen={fullScreen}
-          fullWidth
-          maxWidth="xl"
+          maxWidth="lg"
           open={dialogOpen}
           toggleFunction={toggleDialogOpen}
         >
-          <ItemDetails toggleFunction={toggleDialogOpen} item={item} />
+          {/* <ItemDetails toggleFunction={toggleDialogOpen} item={item} /> */}
+          <ItemDetails2 item={item} toggleFunction={toggleDialogOpen} />
         </Dialog>
       )}
     </Box>
