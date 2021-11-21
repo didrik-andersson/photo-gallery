@@ -1,2 +1,4 @@
-export { ItemDetailsDialog } from "./item-details-dialog/index";
+export { ItemDetails } from "./item-details/index";
 export { ItemList } from "./item-list/index";
+export { Dialog, useDialog } from "./dialog/index";
+export { DialogTitle } from "./dialog-title/index";

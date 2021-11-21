@@ -1,4 +1,3 @@
-import { Block } from "@mui/icons-material";
 import { Box, styled } from "@mui/system";
 
 export default function useStyledComponents() {

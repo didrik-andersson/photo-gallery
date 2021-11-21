@@ -1,34 +1,41 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import DialogTitle from "@mui/material/DialogTitle";
+import { DialogTitle as MuiDialogTitle } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/system";
 
-Title.propTypes = {
+DialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
-export default function Title(props) {
+export default function DialogTitle(props) {
   const { title, onClose, ...other } = props;
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {title}
+    <MuiDialogTitle
+      sx={{
+        m: 0,
+        p: 2,
+        display: "flex",
+        alignItems: "center",
+      }}
+      {...other}
+    >
+      <Box sx={{ flexGrow: 1 }}>{title}</Box>
       {onClose ? (
         <IconButton
           aria-label="close"
           onClick={onClose}
           sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
             color: (theme) => theme.palette.grey[500],
+            p: 0,
           }}
         >
           <CloseIcon />
         </IconButton>
       ) : null}
-    </DialogTitle>
+    </MuiDialogTitle>
   );
 }
