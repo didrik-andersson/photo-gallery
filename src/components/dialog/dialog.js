@@ -12,7 +12,7 @@ export default function Dialog({
   return (
     <MuiDialog
       fullScreen={fullScreen}
-      fullWidth={fullWidth}
+      // fullWidth={fullWidth}
       maxWidth={maxWidth}
       onClose={toggleFunction}
       aria-labelledby="customized-dialog-title"

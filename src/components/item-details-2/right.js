@@ -3,7 +3,7 @@ import { Retailer } from "./index";
 
 export default function Right({ retailers }) {
   return (
-    <Box sx={{ flex: 1.5 }}>
+    <Box>
       {retailers &&
         retailers.map((retailer) => (
           <Retailer

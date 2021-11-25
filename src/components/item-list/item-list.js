@@ -4,11 +4,18 @@ import Masonry from "@mui/lab/Masonry";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useItemContext } from "../../contexts/index";
-import { Dialog, useDialog, ItemDetails, ItemDetails2 } from "../index";
+import {
+  Dialog,
+  useDialog,
+  ItemDetails,
+  ItemDetails2,
+  Dialog2,
+  useDialog2,
+} from "../index";
 
 export default function ItemList() {
   const { loading, getItems, getItem, items, item } = useItemContext();
-  const { toggleDialogOpen, dialogOpen } = useDialog();
+  const { toggleDialogOpen, dialogOpen } = useDialog2();
 
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -37,15 +44,33 @@ export default function ItemList() {
         </Masonry>
       )}
       {item && (
-        <Dialog
-          fullScreen={fullScreen}
-          maxWidth="lg"
+        // <Dialog
+        //   fullScreen={fullScreen}
+        //   maxWidth="lg"
+        //   // fullWidth={false}
+        //   open={dialogOpen}
+        //   toggleFunction={toggleDialogOpen}
+        // >
+        //   {/* <ItemDetails toggleFunction={toggleDialogOpen} item={item} /> */}
+        //   <ItemDetails2 item={item} toggleFunction={toggleDialogOpen} />
+        // </Dialog>
+        <Dialog2
           open={dialogOpen}
           toggleFunction={toggleDialogOpen}
+          title={item.title}
+          maxWidth={1200}
         >
-          {/* <ItemDetails toggleFunction={toggleDialogOpen} item={item} /> */}
-          <ItemDetails2 item={item} toggleFunction={toggleDialogOpen} />
-        </Dialog>
+          {/* <img
+            src={item.img}
+            alt="test"
+            // height="100%"
+            // width="100%"
+            style={{ objectFit: "contain", display: "block" }}
+          /> */}
+          <div style={{ background: "blue", height: "100%" }}>
+            <p style={{ margin: 0 }}>hej</p>
+          </div>
+        </Dialog2>
       )}
     </Box>
   );

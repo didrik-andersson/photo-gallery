@@ -5,7 +5,7 @@ export default function Left({ item }) {
   const { StyledItemImage } = useStyledComponents();
 
   return (
-    <Box sx={{ flex: 1 }}>
+    <Box sx={{ maxHeight: "100%" }}>
       <StyledItemImage src={item.img} alt={item.title} />
     </Box>
   );
