@@ -9,9 +9,8 @@ export default function useStyledComponents() {
     backgroundColor: "#FFF",
     margin: 30,
     zIndex: 1000,
-    maxHeight: 600,
-    width: "100%",
-    height: "100%",
+    height: "calc(100% - 100px)",
+    // width: "100%",
   }));
 
   const StyledBackdrop = styled("div")(() => ({

@@ -67,8 +67,64 @@ export default function ItemList() {
             // width="100%"
             style={{ objectFit: "contain", display: "block" }}
           /> */}
-          <div style={{ background: "blue", height: "100%" }}>
-            <p style={{ margin: 0 }}>hej</p>
+          {/* Set height to calculate heigt of dialog title */}
+          {/* <div
+            style={{
+              display: "flex",
+            }}
+          >
+            <Box
+              sx={{
+                maxWidth: "50%",
+                maxHeight: "calc(100% - 64px)",
+              }}
+            >
+              <img
+                src={item.img}
+                alt="test"
+                style={{
+                  objectFit: "contain",
+                  display: "block",
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                }}
+              />
+            </Box>
+            <Box sx={{}}>p:P</Box>           </div>*/}
+          <div
+            style={{
+              display: "flex",
+              height: "calc(100% - 65px)",
+              // width: "100%",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: "100%",
+              }}
+            >
+              <img
+                src={item.img}
+                alt="test"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                }}
+              />
+            </div>
+            <div style={{ maxWidth: "100%" }}>
+              <div style={{ background: "blue" }}>
+                <h1>This is nice</h1>
+                <p>
+                  dgsdgs gdgsdg d dgd sdg dg dddddddgg gg.dgsdgs gdgsdg d dgd
+                  sdg dg dddddddgg ggdgsdgs gdgsdg d dgd sdg dg dddddddgg
+                  ggdgsdgs gdgsdg d dgd sdg dg dddddddgg ggdgsdgs gdgsdg d dgd
+                  sdg dg dddddddgg ggdgsdgs gdgsdg d dgd sdg dg dddddddgg
+                  ggdgsdgs gdgsdg d dgd sdg dg dddddddgg ggdgsdgs gdgsdg d dgd
+                  sdg dg dddddddgg gg
+                </p>
+              </div>
+            </div>
           </div>
         </Dialog2>
       )}

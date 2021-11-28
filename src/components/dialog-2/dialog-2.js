@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import { useStyledComponents } from "./index";
 import { DialogTitle } from "../index";
 import { Box } from "@mui/system";
+import { Divider } from "@mui/material";
 
 export default function Dialog2({
   open,
@@ -19,16 +20,17 @@ export default function Dialog2({
     <>
       <StyledBackdrop onClick={toggleFunction}>
         <StyledDialog sx={{ maxWidth: maxWidth }}>
-          <Box sx={{ height: "100%", width: "100%" }}>
-            {title && (
+          {title && (
+            <>
               <DialogTitle
                 id="customized-dialog-title"
                 onClose={toggleFunction}
                 title={title}
               />
-            )}
-            {children}
-          </Box>
+              <Divider />
+            </>
+          )}
+          {children}
         </StyledDialog>
       </StyledBackdrop>
     </>,
