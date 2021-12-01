@@ -58,7 +58,7 @@ export default function ItemList() {
           open={dialogOpen}
           toggleFunction={toggleDialogOpen}
           title={item.title}
-          maxWidth={1200}
+          // maxWidth={1200}
         >
           {/* <img
             src={item.img}
@@ -91,41 +91,18 @@ export default function ItemList() {
               />
             </Box>
             <Box sx={{}}>p:P</Box>           </div>*/}
-          <div
+
+          <img
+            src={item.img}
+            alt="test"
             style={{
-              display: "flex",
-              height: "calc(100% - 65px)",
-              // width: "100%",
+              display: "block",
+              maxHeight: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              width: "auto",
             }}
-          >
-            <div
-              style={{
-                maxWidth: "100%",
-              }}
-            >
-              <img
-                src={item.img}
-                alt="test"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                }}
-              />
-            </div>
-            <div style={{ maxWidth: "100%" }}>
-              <div style={{ background: "blue" }}>
-                <h1>This is nice</h1>
-                <p>
-                  dgsdgs gdgsdg d dgd sdg dg dddddddgg gg.dgsdgs gdgsdg d dgd
-                  sdg dg dddddddgg ggdgsdgs gdgsdg d dgd sdg dg dddddddgg
-                  ggdgsdgs gdgsdg d dgd sdg dg dddddddgg ggdgsdgs gdgsdg d dgd
-                  sdg dg dddddddgg ggdgsdgs gdgsdg d dgd sdg dg dddddddgg
-                  ggdgsdgs gdgsdg d dgd sdg dg dddddddgg ggdgsdgs gdgsdg d dgd
-                  sdg dg dddddddgg gg
-                </p>
-              </div>
-            </div>
-          </div>
+          />
         </Dialog2>
       )}
     </Box>

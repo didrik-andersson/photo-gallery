@@ -7,9 +7,12 @@ export default function useStyledComponents() {
     // left: "50%",
     // transform: "translate(-50%, -50%)",
     backgroundColor: "#FFF",
-    margin: 30,
     zIndex: 1000,
-    height: "calc(100% - 100px)",
+    maxWidth: 1000,
+    maxHeight: "80%",
+    height: "100%",
+    overflow: "hidden",
+    margin: 30,
     // width: "100%",
   }));
 
