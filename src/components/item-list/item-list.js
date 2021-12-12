@@ -4,8 +4,7 @@ import Masonry from "@mui/lab/Masonry";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useItemContext } from "../../contexts/index";
-import { Dialog, useDialog, ItemDetails, DialogTitle } from "../index";
-import { Typography } from "@mui/material";
+import { Dialog, useDialog, ItemDetails } from "../index";
 
 export default function ItemList() {
   const { loading, getItems, getItem, items, item } = useItemContext();

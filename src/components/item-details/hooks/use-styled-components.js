@@ -13,7 +13,19 @@ export default function useStyledComponents() {
     opacity: 1,
     transition: "opacity 0.3s",
   }));
+
+  const StyledReferralButton = styled("button")(({ theme }) => ({
+    background: "rgb(65 167 119)",
+    color: "#fff",
+    fontSize: 14,
+    borderRadius: 8,
+    padding: "3px 15px",
+    border: "none",
+    cursor: "pointer",
+    outline: "inherit",
+  }));
   return {
     StyledItemImage,
+    StyledReferralButton,
   };
 }

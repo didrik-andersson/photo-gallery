@@ -1,13 +1,17 @@
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useStyledComponents } from "./index";
 
 export default function Retailer({ name, originalPrice, price, logo }) {
+  const { StyledReferralButton } = useStyledComponents();
+
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        p: 1,
       }}
     >
       <Box
@@ -24,9 +28,7 @@ export default function Retailer({ name, originalPrice, price, logo }) {
           {price}&nbsp;kr
         </Typography>
       </Box>
-      <Button disableFocusRipple variant="contained">
-        Köp mig
-      </Button>
+      <StyledReferralButton>Till butiken</StyledReferralButton>
     </Box>
   );
 }
