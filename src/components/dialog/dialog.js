@@ -1,24 +1,38 @@
 import React from "react";
-import { Dialog as MuiDialog } from "@mui/material";
+import ReactDom from "react-dom";
+import { useStyledComponents } from "./index";
+import { DialogTitle } from "../index";
+import { Divider } from "@mui/material";
 
 export default function Dialog({
-  fullScreen,
-  fullWidth,
-  maxWidth,
   open,
-  toggleFunction,
   children,
+  toggleFunction,
+  title,
+  maxWidth,
 }) {
-  return (
-    <MuiDialog
-      fullScreen={fullScreen}
-      // fullWidth={fullWidth}
-      maxWidth={maxWidth}
-      onClose={toggleFunction}
-      aria-labelledby="customized-dialog-title"
-      open={open}
-    >
-      {children}
-    </MuiDialog>
+  const { StyledDialog, StyledBackdrop } = useStyledComponents();
+
+  if (!open) return null;
+
+  return ReactDom.createPortal(
+    <>
+      <StyledBackdrop onClick={toggleFunction}>
+        <StyledDialog sx={{ maxWidth: maxWidth }}>
+          {title && (
+            <>
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={toggleFunction}
+                title={title}
+              />
+              <Divider />
+            </>
+          )}
+          {children}
+        </StyledDialog>
+      </StyledBackdrop>
+    </>,
+    document.getElementById("portal")
   );
 }

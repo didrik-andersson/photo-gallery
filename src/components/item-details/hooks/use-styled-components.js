@@ -2,29 +2,18 @@ import { Box, styled } from "@mui/system";
 
 export default function useStyledComponents() {
   const StyledItemImage = styled("img")(({ theme }) => ({
-    display: "block",
+    maxHeight: "calc(100vh - 140px)",
     maxWidth: "100%",
-    maxHeight: "100%",
-  }));
-  const StyledDialogContent = styled(Box)(({ theme }) => ({
-    display: "flex",
-    flexDirection: "column",
-    maxHeight: "100%",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-      maxHeight: "85vh",
-    },
-  }));
-  const StyledDialogPanel = styled(Box)(({ theme }) => ({
-    width: "100%",
-    maxHeight: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "50%",
-    },
+    height: "auto",
+    width: "auto",
+    verticalAlign: "middle",
+    display: "block",
+    margin: 0,
+    userSelect: "none",
+    opacity: 1,
+    transition: "opacity 0.3s",
   }));
   return {
     StyledItemImage,
-    StyledDialogContent,
-    StyledDialogPanel,
   };
 }

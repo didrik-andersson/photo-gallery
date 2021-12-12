@@ -1,28 +1,24 @@
-import React from "react";
+import { Box } from "@mui/system";
+import { useStyledComponents, ItemInformation } from "./index";
 import { DialogTitle } from "../index";
-import { useStyledComponents, Retailers } from "./index";
+import { Typography } from "@mui/material";
 
 export default function ItemDetails({ toggleFunction, item }) {
-  const { StyledItemImage, StyledDialogContent, StyledDialogPanel } =
-    useStyledComponents();
-
-  console.log(item);
+  const { StyledItemImage } = useStyledComponents();
 
   return (
-    <div>
-      <DialogTitle
-        id="customized-dialog-title"
-        onClose={toggleFunction}
-        title={item.title}
-      />
-      <StyledDialogContent>
-        <StyledDialogPanel>
-          <StyledItemImage src={item.img} alt={item.title} />
-        </StyledDialogPanel>
-        <StyledDialogPanel>
-          <Retailers retailers={item.retailers} />
-        </StyledDialogPanel>
-      </StyledDialogContent>
-    </div>
+    <Box sx={{ display: "flex", maxHeight: "calc(100vh - 140px)" }}>
+      <figure style={{ margin: 0 }}>
+        <StyledItemImage src={item.img} alt="test" />
+      </figure>
+      <Box sx={{ maxWidth: 400, overflowY: "auto" }}>
+        <DialogTitle
+          id="customized-dialog-title"
+          onClose={toggleFunction}
+          title={item.title}
+        />
+        <ItemInformation retailers={item.retailers} />
+      </Box>
+    </Box>
   );
 }
