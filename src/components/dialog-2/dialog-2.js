@@ -20,7 +20,7 @@ export default function Dialog2({
     <>
       <StyledBackdrop onClick={toggleFunction}>
         <StyledDialog sx={{ maxWidth: maxWidth }}>
-          {/* {title && (
+          {title && (
             <>
               <DialogTitle
                 id="customized-dialog-title"
@@ -29,7 +29,7 @@ export default function Dialog2({
               />
               <Divider />
             </>
-          )} */}
+          )}
           {children}
         </StyledDialog>
       </StyledBackdrop>

@@ -11,7 +11,9 @@ import {
   ItemDetails2,
   Dialog2,
   useDialog2,
+  DialogTitle,
 } from "../index";
+import { Divider, Typography } from "@mui/material";
 
 export default function ItemList() {
   const { loading, getItems, getItem, items, item } = useItemContext();
@@ -57,7 +59,7 @@ export default function ItemList() {
         <Dialog2
           open={dialogOpen}
           toggleFunction={toggleDialogOpen}
-          title={item.title}
+          // title={item.title}
           // maxWidth={1200}
         >
           {/* <img
@@ -91,18 +93,43 @@ export default function ItemList() {
               />
             </Box>
             <Box sx={{}}>p:P</Box>           </div>*/}
-
-          <img
-            src={item.img}
-            alt="test"
-            style={{
-              display: "block",
-              maxHeight: "100%",
-              maxWidth: "100%",
-              height: "auto",
-              width: "auto",
-            }}
-          />
+          <div style={{ display: "flex", maxHeight: "calc(100vh - 140px)" }}>
+            <figure style={{ margin: 0 }}>
+              <img
+                src={item.img}
+                alt="test"
+                style={{
+                  maxHeight: "calc(100vh - 140px)",
+                  maxWidth: "100%",
+                  height: "auto",
+                  width: "auto",
+                  verticalAlign: "middle",
+                  display: "block",
+                  margin: 0,
+                  userSelect: "none",
+                  opacity: 1,
+                  transition: "opacity 0.3s",
+                }}
+              />
+            </figure>
+            <div style={{ maxWidth: 400, width: "100%", overflowY: "auto" }}>
+              <DialogTitle
+                id="customized-dialog-title"
+                onClose={toggleDialogOpen}
+                title={item.title}
+              />
+              <Box sx={{ p: 2 }}>
+                <Box>
+                  <Typography variant="subtitle2">
+                    Hello dude :P Hello dude :P Hello dude :P Hello dude :P
+                    Hello dude :P Hello dude :P Hello dude :P Hello dude :P
+                    Hello dude :P Hello dude :PHello dude :P Hello dude :P Hello
+                    dude :P Hello dude :P Hello dude :PHello dude :P Hello dude.
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+          </div>
         </Dialog2>
       )}
     </Box>
