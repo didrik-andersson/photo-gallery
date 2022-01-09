@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 import { useItemContext } from "../../contexts/index";
 import { Dialog, useDialog, ItemDetails } from "../index";
 
 export default function ItemList() {
   const { loading, getItems, getItem, items, item } = useItemContext();
   const { toggleDialogOpen, dialogOpen } = useDialog();
-
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     getItems();
@@ -40,7 +35,7 @@ export default function ItemList() {
         <Dialog
           open={dialogOpen}
           toggleFunction={toggleDialogOpen}
-          maxWidth={1000}
+          maxWidth={1500}
           title={false}
         >
           <ItemDetails item={item} toggleFunction={toggleDialogOpen} />

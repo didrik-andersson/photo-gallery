@@ -5,6 +5,7 @@ export default function useStyledComponents() {
     backgroundColor: "#FFF",
     zIndex: 1000,
     position: "relative",
+    margin: 30,
   }));
 
   const StyledBackdrop = styled("div")(() => ({

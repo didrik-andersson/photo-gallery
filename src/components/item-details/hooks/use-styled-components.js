@@ -24,8 +24,18 @@ export default function useStyledComponents() {
     cursor: "pointer",
     outline: "inherit",
   }));
+
+  const StyledItemInformationWrapper = styled("div")(({ theme }) => ({
+    maxWidth: 300,
+    overflowY: "auto",
+    [theme.breakpoints.up("md")]: {
+      maxWidth: 400,
+    },
+  }));
+
   return {
     StyledItemImage,
     StyledReferralButton,
+    StyledItemInformationWrapper,
   };
 }
