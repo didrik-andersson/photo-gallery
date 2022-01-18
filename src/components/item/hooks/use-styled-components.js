@@ -2,16 +2,14 @@ import { Box, styled } from "@mui/system";
 
 export default function useStyledComponents() {
   const StyledItemImage = styled("img")(({ theme }) => ({
-    maxHeight: "calc(100vh - 140px)",
+    maxHeight: "80vh",
     maxWidth: "100%",
-    height: "auto",
     width: "auto",
-    verticalAlign: "middle",
     display: "block",
-    margin: 0,
-    userSelect: "none",
-    opacity: 1,
-    transition: "opacity 0.3s",
+    margin: "0px auto",
+    [theme.breakpoints.up("md")]: {
+      maxHeight: "100%",
+    },
   }));
 
   const StyledReferralButton = styled("button")(({ theme }) => ({
@@ -24,8 +22,33 @@ export default function useStyledComponents() {
     cursor: "pointer",
     outline: "inherit",
   }));
+
+  const ItemWrapper = styled("div")(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    padding: 32,
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "center",
+      flexDirection: "row",
+    },
+  }));
+
+  const LeftPane = styled("div")(({ theme }) => ({
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "50%",
+    },
+  }));
+
+  const RightPane = styled("div")(({ theme }) => ({
+    [theme.breakpoints.up("md")]: {
+      width: "50%",
+    },
+  }));
   return {
     StyledItemImage,
     StyledReferralButton,
+    ItemWrapper,
+    LeftPane,
+    RightPane,
   };
 }
