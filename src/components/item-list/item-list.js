@@ -21,8 +21,8 @@ export default function ItemList() {
           {items.map((item) => (
             <img
               key={item.id}
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.images[0]}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
               onClick={() => {

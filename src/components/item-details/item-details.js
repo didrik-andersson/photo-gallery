@@ -13,7 +13,7 @@ export default function ItemDetails({ toggleFunction, item }) {
     <Box sx={{ display: "flex", maxHeight: "calc(100vh - 140px)" }}>
       <figure style={{ margin: 0 }}>
         <StyledItemImage
-          src={item.img}
+          src={item.images[0]}
           alt="test"
           ref={itemImage}
           onLoad={() => setItemImageHeight(itemImage.current.height)}
