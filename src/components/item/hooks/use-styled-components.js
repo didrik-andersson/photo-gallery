@@ -4,12 +4,9 @@ export default function useStyledComponents() {
   const StyledItemImage = styled("img")(({ theme }) => ({
     maxHeight: "calc(80vh - 32px)",
     maxWidth: "100%",
-    width: "auto",
-    display: "block",
+    width: "auto!important",
+    display: "block!important",
     margin: "0px auto",
-    // [theme.breakpoints.up("md")]: {
-    //   maxHeight: "100%",
-    // },
   }));
 
   const StyledReferralButton = styled("button")(({ theme }) => ({
@@ -34,13 +31,10 @@ export default function useStyledComponents() {
   }));
 
   const ItemImageCarouselWrapper = styled("div")(({ theme }) => ({
-    display: "none",
+    display: "flex",
     maxHeight: "calc(20vh - 40px)",
     flexDirection: "column",
     marginLeft: 24,
-    [theme.breakpoints.up("sm")]: {
-      display: "flex",
-    },
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
       marginTop: 8,
@@ -69,19 +63,29 @@ export default function useStyledComponents() {
     display: "block",
   }));
 
-  const LeftPane = styled("div")(({ theme }) => ({
-    display: "flex",
+  const Ratata = styled("div")(({ theme }) => ({
     marginBottom: 18,
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+    },
     [theme.breakpoints.up("md")]: {
       flexDirection: "column",
-      maxWidth: "50%",
+      marginBottom: 0,
     },
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-evenly",
     },
   }));
 
+  const LeftPane = styled("div")(({ theme }) => ({
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "50%",
+    },
+  }));
+
   const RightPane = styled("div")(({ theme }) => ({
+    overflow: "hidden",
     [theme.breakpoints.up("md")]: {
       paddingLeft: 40,
       width: "50%",
@@ -94,6 +98,7 @@ export default function useStyledComponents() {
     ItemImageCarouselWrapper,
     ItemImageCarouselImageWrapper,
     ItemImageCarouselImage,
+    Ratata,
     LeftPane,
     RightPane,
   };

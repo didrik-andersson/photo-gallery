@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   ItemImage,
-  ItemImageCarousel,
   ItemInformation,
   useStyledComponents,
   useItem,
@@ -60,8 +59,8 @@ export default function Item() {
         <ItemWrapper>
           {mdDown && <ItemBreadcrumbs />}
           <LeftPane>
-            <ItemImage selectedItemImage={selectedItemImage} />
-            <ItemImageCarousel
+            <ItemImage
+              selectedItemImage={selectedItemImage}
               item={item}
               setSelectedItemImage={setSelectedItemImage}
             />

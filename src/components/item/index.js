@@ -5,4 +5,5 @@ export { default as Retailer } from "./item-retailer";
 export { default as SizePill } from "./item-size-pill";
 export { default as ItemImageCarousel } from "./item-image-carousel";
 export { default as ItemBreadcrumbs } from "./item-breadcrumbs";
+export { default as ItemImageSlider } from "./item-image-slider";
 export { useStyledComponents, useItem } from "./hooks/index";
