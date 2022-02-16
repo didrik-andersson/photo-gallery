@@ -1,9 +1,11 @@
-import { Box, styled } from "@mui/system";
+import { styled } from "@mui/system";
 
 export default function useStyledComponents() {
-  const StyledItemImage = styled("img")(({ theme }) => ({
-    maxHeight: "calc(80vh - 32px)",
-    maxWidth: "100%",
+  const StyledItemImage = styled("img", {
+    shouldForwardProp: (prop) => prop !== "maxHeight" && prop !== "maxWidth",
+  })(({ theme, maxHeight, maxWidth }) => ({
+    maxHeight: maxHeight ?? "100%",
+    maxWidth: maxWidth ?? "100%",
     width: "auto!important",
     display: "block!important",
     margin: "0px auto",
@@ -32,8 +34,8 @@ export default function useStyledComponents() {
 
   const ItemImageCarouselWrapper = styled("div")(({ theme }) => ({
     display: "flex",
-    maxHeight: "calc(20vh - 40px)",
     flexDirection: "column",
+    // maxHeight: "20%",
     marginLeft: 24,
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
@@ -44,11 +46,15 @@ export default function useStyledComponents() {
 
   const ItemImageCarouselImageWrapper = styled("div")(({ theme }) => ({
     width: 100,
+    background: "#f2f2f2",
     marginBottom: 8,
+    display: "flex",
+    alignItems: "center",
     [`&:last-child`]: {
       marginBottom: 0,
     },
     [theme.breakpoints.up("md")]: {
+      width: 120,
       marginRight: 8,
       marginBottom: 0,
       [`&:last-child`]: {
@@ -63,15 +69,17 @@ export default function useStyledComponents() {
     display: "block",
   }));
 
-  const Ratata = styled("div")(({ theme }) => ({
+  const ItemImageWrapper = styled("div")(({ theme }) => ({
     marginBottom: 18,
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "flex",
+      maxHeight: 800,
     },
     [theme.breakpoints.up("md")]: {
       flexDirection: "column",
       marginBottom: 0,
+      maxWidth: 504,
     },
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-evenly",
@@ -95,10 +103,10 @@ export default function useStyledComponents() {
     StyledItemImage,
     StyledReferralButton,
     ItemWrapper,
+    ItemImageWrapper,
     ItemImageCarouselWrapper,
     ItemImageCarouselImageWrapper,
     ItemImageCarouselImage,
-    Ratata,
     LeftPane,
     RightPane,
   };

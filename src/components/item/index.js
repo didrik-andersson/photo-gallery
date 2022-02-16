@@ -6,4 +6,6 @@ export { default as SizePill } from "./item-size-pill";
 export { default as ItemImageCarousel } from "./item-image-carousel";
 export { default as ItemBreadcrumbs } from "./item-breadcrumbs";
 export { default as ItemImageSlider } from "./item-image-slider";
+export { default as ItemImageDialog } from "./item-image-dialog";
+export { default as Arrows } from "./arrows";
 export { useStyledComponents, useItem } from "./hooks/index";

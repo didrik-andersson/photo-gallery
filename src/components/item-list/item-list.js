@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import { useItemContext } from "../../contexts/index";
-import { Dialog, useDialog, ItemDetails } from "../index";
+import { ItemContext } from "../../contexts/index";
+import { useContext } from "../../hooks/index";
 import { useNavigate } from "react-router-dom";
 
 export default function ItemList() {
-  const { loading, getItems, getItem, items, item } = useItemContext();
-  const { toggleDialogOpen, dialogOpen } = useDialog();
+  const { getItems, items } = useContext(ItemContext);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -27,22 +26,10 @@ export default function ItemList() {
               loading="lazy"
               onClick={() => {
                 navigate(`/item/${item.id}`);
-                // toggleDialogOpen();
-                // getItem(item.id);
               }}
             />
           ))}
         </Masonry>
-      )}
-      {item && (
-        <Dialog
-          open={dialogOpen}
-          toggleFunction={toggleDialogOpen}
-          maxWidth={1000}
-          title={false}
-        >
-          <ItemDetails item={item} toggleFunction={toggleDialogOpen} />
-        </Dialog>
       )}
     </Box>
   );

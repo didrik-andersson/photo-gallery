@@ -1,34 +1,38 @@
 import React, { useEffect } from "react";
 import {
+  useItem,
   ItemImage,
   ItemInformation,
-  useStyledComponents,
-  useItem,
   ItemBreadcrumbs,
+  ItemImageDialog,
+  ItemImageSlider,
+  useStyledComponents,
 } from "./index";
+import { useDialog } from "../index";
+import { ItemContext } from "../../contexts/index";
+import { useContext } from "../../hooks/index";
 import { useParams } from "react-router-dom";
-import { useItemContext } from "../../contexts/index";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Item() {
-  const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
   const {
-    selectedItemImage,
-    setSelectedItemImage,
+    selectedSize,
+    availableSizes,
+    setSelectedSize,
     filteredRetailers,
     setFilteredRetailers,
-    availableSizes,
-    setUniqueAvailableSizes,
-    selectedSize,
-    setSelectedSize,
     setinitialSelectedSize,
+    setUniqueAvailableSizes,
   } = useItem();
-  const { getItem, item } = useItemContext();
 
   let { id } = useParams();
   const theme = useTheme();
+  const { getItem, item } = useContext(ItemContext);
+  const { toggleDialogOpen, dialogOpen } = useDialog();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
 
   useEffect(() => {
     getItem(id);
@@ -44,7 +48,6 @@ export default function Item() {
     }
 
     if (item && selectedSize) {
-      setSelectedItemImage(item.images[0]);
       setFilteredRetailers(
         item.retailers.filter((retailer) =>
           Object.keys(retailer.sizes).includes(selectedSize)
@@ -56,26 +59,32 @@ export default function Item() {
   return (
     <>
       {item && (
-        <ItemWrapper>
-          {mdDown && <ItemBreadcrumbs />}
-          <LeftPane>
-            <ItemImage
-              selectedItemImage={selectedItemImage}
+        <>
+          <ItemWrapper>
+            {mdDown && <ItemBreadcrumbs />}
+            <LeftPane>
+              <ItemImage item={item} toggleDialogOpen={toggleDialogOpen} />
+              {smDown && <ItemImageSlider stepper images={item.images} />}
+            </LeftPane>
+            <RightPane>
+              {!mdDown && <ItemBreadcrumbs />}
+              <ItemInformation
+                item={item}
+                selectedSize={selectedSize}
+                availableSizes={availableSizes}
+                setSelectedSize={setSelectedSize}
+                filteredRetailers={filteredRetailers}
+              />
+            </RightPane>
+          </ItemWrapper>
+          {dialogOpen && (
+            <ItemImageDialog
               item={item}
-              setSelectedItemImage={setSelectedItemImage}
+              dialogOpen={dialogOpen}
+              toggleDialogOpen={toggleDialogOpen}
             />
-          </LeftPane>
-          <RightPane>
-            {!mdDown && <ItemBreadcrumbs />}
-            <ItemInformation
-              item={item}
-              filteredRetailers={filteredRetailers}
-              availableSizes={availableSizes}
-              selectedSize={selectedSize}
-              setSelectedSize={setSelectedSize}
-            />
-          </RightPane>
-        </ItemWrapper>
+          )}
+        </>
       )}
     </>
   );

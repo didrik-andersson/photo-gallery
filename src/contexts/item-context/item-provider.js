@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
 import { ItemContext } from "./index";
 
@@ -42,9 +42,16 @@ export default function ItemProvider(props) {
       });
   }
 
-  return (
-    <ItemContext.Provider value={{ loading, getItems, getItem, item, items }}>
-      {children}
-    </ItemContext.Provider>
+  const value = useMemo(
+    () => ({
+      loading,
+      getItems,
+      getItem,
+      item,
+      items,
+    }),
+    [loading, item, items]
   );
+
+  return <ItemContext.Provider value={value}>{children}</ItemContext.Provider>;
 }

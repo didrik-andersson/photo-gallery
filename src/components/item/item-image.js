@@ -1,35 +1,24 @@
 import { Box } from "@mui/system";
 import React from "react";
-import {
-  useStyledComponents,
-  ItemImageCarousel,
-  ItemImageSlider,
-} from "./index";
+import { useStyledComponents, ItemImageCarousel } from "./index";
+import { ItemImageContext } from "../../contexts/index";
+import { useContext } from "../../hooks/index";
+import { useTheme } from "@mui/material/styles";
 
-export default function ItemImage({
-  setSelectedItemImage,
-  selectedItemImage,
-  item,
-}) {
-  const { StyledItemImage, Ratata } = useStyledComponents();
+export default function ItemImage({ item, toggleDialogOpen }) {
+  const { StyledItemImage, ItemImageWrapper } = useStyledComponents();
+  const { activeImageIndex } = useContext(ItemImageContext);
 
   return (
-    <Box>
-      <Ratata>
-        <Box sx={{ maxHeight: "calc(80vh - 32px)" }}>
-          <StyledItemImage src={selectedItemImage} alt="dev alt text" />
-        </Box>
-        <Box>
-          <ItemImageCarousel
-            item={item}
-            setSelectedItemImage={setSelectedItemImage}
-            selectedItemImage={selectedItemImage}
-          />
-        </Box>
-      </Ratata>
-      <Box sx={{ display: { sm: "none" } }}>
-        <ItemImageSlider item={item} />
+    <ItemImageWrapper>
+      <Box>
+        <StyledItemImage
+          alt="dev alt text"
+          onClick={() => toggleDialogOpen()}
+          src={item.images[activeImageIndex]}
+        />
       </Box>
-    </Box>
+      <ItemImageCarousel images={item.images} />
+    </ItemImageWrapper>
   );
 }

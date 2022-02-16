@@ -4,7 +4,6 @@ export default function useItem() {
   const [filteredRetailers, setFilteredRetailers] = useState(null);
   const [availableSizes, setAvailableSizes] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [selectedItemImage, setSelectedItemImage] = useState(null);
   const [sizes, setSizes] = useState([]);
 
   const sortOnOccurrence = (array) => {
@@ -53,7 +52,5 @@ export default function useItem() {
     selectedSize,
     setSelectedSize,
     setinitialSelectedSize,
-    selectedItemImage,
-    setSelectedItemImage,
   };
 }

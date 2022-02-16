@@ -10,15 +10,24 @@ export default function Dialog({
   toggleFunction,
   title,
   maxWidth,
+  maxHeight,
+  opacity,
 }) {
   const { StyledDialog, StyledBackdrop } = useStyledComponents();
 
   if (!open) return null;
 
+  const handleDialogClick = (e) => {
+    e.stopPropagation();
+  };
+
   return ReactDom.createPortal(
     <>
-      <StyledBackdrop onClick={toggleFunction}>
-        <StyledDialog sx={{ maxWidth: maxWidth }}>
+      <StyledBackdrop onClick={toggleFunction} opacity={opacity}>
+        <StyledDialog
+          onClick={handleDialogClick}
+          sx={{ maxWidth: maxWidth, maxHeight: maxHeight }}
+        >
           {title && (
             <>
               <DialogTitle

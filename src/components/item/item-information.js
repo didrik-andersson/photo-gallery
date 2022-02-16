@@ -16,13 +16,17 @@ export default function ItemInformation({
       </Typography>
       {filteredRetailers && (
         <Box sx={{ mb: 6, maxWidth: { md: 430 } }}>
-          {filteredRetailers.map((retailer) => (
-            <Retailer
-              key={retailer.name}
-              retailer={retailer}
-              selectedSize={selectedSize}
-            />
-          ))}
+          {filteredRetailers.map((retailer) => {
+            console.log("shof");
+
+            return (
+              <Retailer
+                key={retailer.name}
+                retailer={retailer}
+                selectedSize={selectedSize}
+              />
+            );
+          })}
         </Box>
       )}
       <Box sx={{ display: "flex", flexWrap: "wrap", mb: 4, maxWidth: 550 }}>

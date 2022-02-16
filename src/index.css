@@ -16,15 +16,15 @@ code {
     monospace;
 }
 
-.slick-dots {
-  position: unset;
+/* .MuiMobileStepper-dotActive {
+  background: rgb(240, 49, 49);
+} */
+
+.MuiMobileStepper-root {
+  background: none;
 }
 
-/* the slides */
-.slick-slider {
-  margin: 0px -8px;
-}
-/* the parent */
-.slick-slide {
-  border: 8px solid white;
+.MuiMobileStepper-dot {
+  height: 7px;
+  width: 7px;
 }

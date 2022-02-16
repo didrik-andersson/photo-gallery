@@ -1,0 +1,56 @@
+import { Box } from "@mui/system";
+import React from "react";
+import { ItemImageSlider } from "./index";
+import { Dialog } from "../index";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+export default function ItemImageDialog({
+  item,
+  dialogOpen,
+  toggleDialogOpen,
+}) {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Box>
+      <Dialog
+        open={dialogOpen}
+        toggleFunction={toggleDialogOpen}
+        title={false}
+        opacity={0.8}
+        maxWidth="calc(100vw - 50px)"
+      >
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <IconButton
+            aria-label="close dialog"
+            size="large"
+            sx={{
+              color: "#fff",
+              position: "fixed",
+              top: 10,
+              right: 10,
+              zIndex: 100000,
+            }}
+            onClick={toggleDialogOpen}
+          >
+            <CloseIcon fontSize="large" />
+          </IconButton>
+        </Box>
+
+        <ItemImageSlider
+          transparent
+          stepper
+          arrows
+          activeStepColor="#6c6c6c"
+          images={item.images}
+          maxWidth={smDown ? "calc(100vw - 50px)" : "calc(100vw - 150px)"}
+          maxHeight="calc(100vh - 100px)"
+        />
+      </Dialog>
+    </Box>
+  );
+}
