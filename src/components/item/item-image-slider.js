@@ -15,12 +15,23 @@ export default function ItemImageSlider({
   transparent,
 }) {
   const { StyledItemImage } = useStyledComponents();
-  const { activeImageIndex, handleImageIndexChange } =
-    useContext(ItemImageContext);
+  const {
+    activeImageIndex,
+    handleImageIndexChange,
+    handleNextImageIndex,
+    handlePrevImageIndex,
+  } = useContext(ItemImageContext);
 
   return (
     <Box>
-      {arrows && <Arrows />}
+      {arrows && (
+        <Arrows
+          activeStep={activeImageIndex}
+          maxSteps={images.length}
+          handlePrevious={handlePrevImageIndex}
+          handleNext={handleNextImageIndex}
+        />
+      )}
       <ContentSlider
         stepper={stepper}
         activeStepColor={activeStepColor}

@@ -3,9 +3,9 @@ import {
   useItem,
   ItemImage,
   ItemInformation,
-  ItemBreadcrumbs,
   ItemImageDialog,
   ItemImageSlider,
+  ItemBreadcrumbs,
   useStyledComponents,
 } from "./index";
 import { useDialog } from "../index";
@@ -61,13 +61,13 @@ export default function Item() {
       {item && (
         <>
           <ItemWrapper>
-            {mdDown && <ItemBreadcrumbs />}
+            {mdDown && <ItemBreadcrumbs currentPosition={item.title} />}
             <LeftPane>
               <ItemImage item={item} toggleDialogOpen={toggleDialogOpen} />
               {smDown && <ItemImageSlider stepper images={item.images} />}
             </LeftPane>
             <RightPane>
-              {!mdDown && <ItemBreadcrumbs />}
+              {!mdDown && <ItemBreadcrumbs currentPosition={item.title} />}
               <ItemInformation
                 item={item}
                 selectedSize={selectedSize}

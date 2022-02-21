@@ -74,7 +74,6 @@ export default function useStyledComponents() {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "flex",
-      maxHeight: 800,
     },
     [theme.breakpoints.up("md")]: {
       flexDirection: "column",
@@ -83,6 +82,7 @@ export default function useStyledComponents() {
     },
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-evenly",
+      maxHeight: 800,
     },
   }));
 

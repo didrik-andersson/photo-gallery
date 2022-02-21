@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { ItemImageSlider } from "./index";
 import { Dialog } from "../index";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -22,24 +22,22 @@ export default function ItemImageDialog({
         toggleFunction={toggleDialogOpen}
         title={false}
         opacity={0.8}
-        maxWidth="calc(100vw - 50px)"
+        maxWidth={smDown ? "calc(100vw - 50px)" : "calc(100vw - 150px)"}
       >
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <IconButton
-            aria-label="close dialog"
-            size="large"
-            sx={{
-              color: "#fff",
-              position: "fixed",
-              top: 10,
-              right: 10,
-              zIndex: 100000,
-            }}
-            onClick={toggleDialogOpen}
-          >
-            <CloseIcon fontSize="large" />
-          </IconButton>
-        </Box>
+        <IconButton
+          aria-label="close dialog"
+          size="large"
+          sx={{
+            color: "#fff",
+            position: "fixed",
+            top: 10,
+            right: 10,
+            zIndex: 100000,
+          }}
+          onClick={toggleDialogOpen}
+        >
+          <CloseIcon fontSize="large" />
+        </IconButton>
 
         <ItemImageSlider
           transparent
@@ -48,7 +46,7 @@ export default function ItemImageDialog({
           activeStepColor="#6c6c6c"
           images={item.images}
           maxWidth={smDown ? "calc(100vw - 50px)" : "calc(100vw - 150px)"}
-          maxHeight="calc(100vh - 100px)"
+          maxHeight="calc(100vh - 150px)"
         />
       </Dialog>
     </Box>

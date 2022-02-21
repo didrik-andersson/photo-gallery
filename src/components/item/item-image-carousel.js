@@ -28,14 +28,6 @@ export default function ItemImageCarousel({ images }) {
           <ItemImageCarouselImage src={image} />
         </ItemImageCarouselImageWrapper>
       ))}
-      {images.map((image, index) => (
-        <ItemImageCarouselImageWrapper
-          key={image + index}
-          onClick={() => handleChangeImage(index)}
-        >
-          <ItemImageCarouselImage src={image} />
-        </ItemImageCarouselImageWrapper>
-      ))}
     </ItemImageCarouselWrapper>
   );
 }

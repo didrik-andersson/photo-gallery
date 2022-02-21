@@ -1,29 +1,38 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
+import { Breadcrumbs as MuiBreadcrumbs } from "@mui/material";
 import Link from "@mui/material/Link";
+import { useLocation, matchRoutes, useNavigate } from "react-router-dom";
+import { useRouter } from "../../hooks/index";
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
+export default function Breadcrumbs({ currentPosition }) {
+  let location = useLocation();
+  let navigate = useNavigate();
+  const { routes } = useRouter();
 
-export default function Breadcrumbs() {
+  const matchedRoutes = matchRoutes(routes, location.pathname);
+  const mostSpecificMatchedRoute =
+    matchedRoutes.length > 0 && matchedRoutes[matchedRoutes.length - 1];
+
+  const breadcrumbs = mostSpecificMatchedRoute.route.element.props.breadcrumbs;
+
   return (
-    <div role="presentation" onClick={handleClick}>
+    <>
       <MuiBreadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-          Hem
-        </Link>
-        <Link
-          underline="hover"
-          color="inherit"
-          href="/getting-started/installation/"
-        >
-          Posters
-        </Link>
-        <Typography color="text.primary">Giraff Poster</Typography>
+        {breadcrumbs &&
+          breadcrumbs.map((crumbie) => (
+            <Link
+              key={crumbie.path + crumbie.name}
+              underline="hover"
+              color="inherit"
+              onClick={() => navigate(crumbie.path)}
+              sx={{ cursor: "pointer" }}
+            >
+              {crumbie.label}
+            </Link>
+          ))}
+        <Typography color="text.primary">{currentPosition}</Typography>
       </MuiBreadcrumbs>
-    </div>
+    </>
   );
 }

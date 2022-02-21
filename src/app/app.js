@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./index";
-import { ItemProvider, ItemImageProvider } from "../contexts/index";
 import { useCustomTheme } from "../hooks";
+import { ItemProvider } from "../contexts/index";
 import { ThemeProvider } from "@mui/material/styles";
 
 export default function App() {
@@ -11,11 +11,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <ItemProvider>
-        <ItemImageProvider>
-          <ThemeProvider theme={customTheme}>
-            <Router />
-          </ThemeProvider>
-        </ItemImageProvider>
+        <ThemeProvider theme={customTheme}>
+          <Router />
+        </ThemeProvider>
       </ItemProvider>
     </BrowserRouter>
   );

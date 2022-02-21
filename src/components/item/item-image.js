@@ -3,7 +3,6 @@ import React from "react";
 import { useStyledComponents, ItemImageCarousel } from "./index";
 import { ItemImageContext } from "../../contexts/index";
 import { useContext } from "../../hooks/index";
-import { useTheme } from "@mui/material/styles";
 
 export default function ItemImage({ item, toggleDialogOpen }) {
   const { StyledItemImage, ItemImageWrapper } = useStyledComponents();

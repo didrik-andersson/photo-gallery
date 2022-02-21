@@ -2,7 +2,15 @@ import { Box, IconButton } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-export default function Arrows() {
+export default function Arrows({
+  maxSteps,
+  activeStep,
+  handlePrevious,
+  handleNext,
+}) {
+  const firstStep = activeStep === 0;
+  let lastStep = activeStep === maxSteps - 1;
+
   return (
     <Box>
       <IconButton
@@ -15,6 +23,8 @@ export default function Arrows() {
           left: 10,
           zIndex: 1000000,
         }}
+        onClick={handlePrevious}
+        disabled={firstStep}
       >
         <ArrowBackIosNewIcon fontSize="large" />
       </IconButton>
@@ -28,6 +38,8 @@ export default function Arrows() {
           right: 10,
           zIndex: 1000000,
         }}
+        onClick={handleNext}
+        disabled={lastStep}
       >
         <ArrowForwardIosIcon fontSize="large" />
       </IconButton>

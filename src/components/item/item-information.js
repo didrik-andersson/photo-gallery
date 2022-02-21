@@ -41,13 +41,17 @@ export default function ItemInformation({
           ))}
       </Box>
       <Typography variant="subtitle2">
-        Denna är riktigt fin måste jag säga, har letat länge efter något
-        liknande. Denna är riktigt fin måste jag säga, har letat länge efter
-        något liknande.Denna är riktigt fin måste jag säga, har letat länge
-        efter något liknande.Denna är riktigt fin måste jag säga, har letat
-        länge efter något liknande.Denna är riktigt fin måste jag säga, har
-        letat länge efter något liknande.Denna är riktigt fin måste jag säga,
-        har letat länge efter något liknande.
+        {item.description ?? (
+          <>
+            Denna är riktigt fin måste jag säga, har letat länge efter något
+            liknande. Denna är riktigt fin måste jag säga, har letat länge efter
+            något liknande.Denna är riktigt fin måste jag säga, har letat länge
+            efter något liknande.Denna är riktigt fin måste jag säga, har letat
+            länge efter något liknande.Denna är riktigt fin måste jag säga, har
+            letat länge efter något liknande.Denna är riktigt fin måste jag
+            säga, har letat länge efter något liknande.
+          </>
+        )}
       </Typography>
     </Box>
   );
