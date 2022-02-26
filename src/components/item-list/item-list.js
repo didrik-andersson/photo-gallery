@@ -22,7 +22,7 @@ export default function ItemList() {
               key={item.id}
               src={`${item.images[0]}?w=248&fit=crop&auto=format`}
               srcSet={`${item.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
+              alt={item.name}
               loading="lazy"
               onClick={() => {
                 navigate(`/item/${item.id}`);

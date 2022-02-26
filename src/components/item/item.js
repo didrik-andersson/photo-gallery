@@ -50,24 +50,26 @@ export default function Item() {
     if (item && selectedSize) {
       setFilteredRetailers(
         item.retailers.filter((retailer) =>
-          Object.keys(retailer.sizes).includes(selectedSize)
+          retailer.sizes.some((s) => s.size === selectedSize)
         )
       );
     }
   }, [item, selectedSize]);
+
+  console.log(availableSizes);
 
   return (
     <>
       {item && (
         <>
           <ItemWrapper>
-            {mdDown && <ItemBreadcrumbs currentPosition={item.title} />}
+            {mdDown && <ItemBreadcrumbs currentPosition={item.name} />}
             <LeftPane>
               <ItemImage item={item} toggleDialogOpen={toggleDialogOpen} />
               {smDown && <ItemImageSlider stepper images={item.images} />}
             </LeftPane>
             <RightPane>
-              {!mdDown && <ItemBreadcrumbs currentPosition={item.title} />}
+              {!mdDown && <ItemBreadcrumbs currentPosition={item.name} />}
               <ItemInformation
                 item={item}
                 selectedSize={selectedSize}

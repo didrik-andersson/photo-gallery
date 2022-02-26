@@ -1,9 +1,19 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useEffect, useState } from "react";
 import { useStyledComponents } from "../index";
 
 export default function Retailer({ name, retailer, selectedSize }) {
   const { StyledReferralButton } = useStyledComponents();
+  const [currentPrice, setCurrentPrice] = useState(null);
+
+  useEffect(() => {
+    let selectedSizePrice = retailer.sizes.find(
+      ({ size }) => size === selectedSize
+    )?.price;
+
+    selectedSizePrice && setCurrentPrice(selectedSizePrice);
+  }, [selectedSize]);
 
   return (
     <Box
@@ -31,7 +41,7 @@ export default function Retailer({ name, retailer, selectedSize }) {
         </Box>
         <Typography component="div"></Typography>
         <Box sx={{ fontSize: 16, fontWeight: 500 }}>
-          {retailer.sizes[selectedSize]?.price}&nbsp;kr
+          {currentPrice && <>{currentPrice}&nbsp;kr</>}
         </Box>
       </Box>
       <StyledReferralButton>Till butiken</StyledReferralButton>

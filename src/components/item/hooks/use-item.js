@@ -17,12 +17,13 @@ export default function useItem() {
   const setinitialSelectedSize = async (item) => {
     await Promise.all(
       item.retailers.map(async (retailer) => {
-        Object.keys(retailer.sizes).forEach((size, index) => {
+        retailer.sizes.forEach((size, index) => {
           setSizes((prevState) => [
             ...prevState,
             {
-              size: size,
-              unit: retailer.sizes[size].unit,
+              size: size.size,
+              unit: size.unit,
+              price: size.price,
               index: index,
             },
           ]);

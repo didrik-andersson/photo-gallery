@@ -12,13 +12,11 @@ export default function ItemInformation({
   return (
     <Box>
       <Typography sx={{ my: 4 }} variant="h6">
-        {item.title}
+        {item.name}
       </Typography>
       {filteredRetailers && (
         <Box sx={{ mb: 6, maxWidth: { md: 430 } }}>
           {filteredRetailers.map((retailer) => {
-            console.log("shof");
-
             return (
               <Retailer
                 key={retailer.name}
