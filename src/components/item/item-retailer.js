@@ -1,13 +1,13 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useStyledComponents } from "../index";
 
 export default function Retailer({ name, retailer, selectedSize }) {
   const { StyledReferralButton } = useStyledComponents();
   const [currentPrice, setCurrentPrice] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let selectedSizePrice = retailer.sizes.find(
       ({ size }) => size === selectedSize
     )?.price;

@@ -27,7 +27,7 @@ export default function ItemInformation({
           })}
         </Box>
       )}
-      <Box sx={{ display: "flex", flexWrap: "wrap", mb: 4, maxWidth: 550 }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", mb: 4, maxWidth: 500 }}>
         {availableSizes &&
           availableSizes.map((size) => (
             <SizePill

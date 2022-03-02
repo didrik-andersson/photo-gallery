@@ -6,8 +6,8 @@ export default function useItem() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [sizes, setSizes] = useState([]);
 
-  const sortOnOccurrence = (array) => {
-    return array.sort(
+  const sortOnOccurrence = async (array) => {
+    return await array.sort(
       (b, a) =>
         array.filter((v) => v === a).length -
         array.filter((v) => v === b).length
@@ -31,11 +31,10 @@ export default function useItem() {
       })
     );
 
-    let mostOccurringSize = sortOnOccurrence(
+    let mostOccurringSize = await sortOnOccurrence(
       sizes.map((size) => size.size)
-    ).shift();
-
-    setSelectedSize(mostOccurringSize);
+    );
+    setSelectedSize(mostOccurringSize.shift());
   };
 
   const setUniqueAvailableSizes = () => {
@@ -44,6 +43,7 @@ export default function useItem() {
     });
     setAvailableSizes(uniqueSizes);
   };
+
 
   return {
     filteredRetailers,

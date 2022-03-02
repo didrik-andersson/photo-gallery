@@ -9,7 +9,7 @@ import {
   useStyledComponents,
 } from "./index";
 import { useDialog } from "../index";
-import { ItemContext } from "../../contexts/index";
+import { ItemContext, ItemContextTest } from "../../contexts/index";
 import { useContext } from "../../hooks/index";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
@@ -28,15 +28,17 @@ export default function Item() {
 
   let { id } = useParams();
   const theme = useTheme();
-  const { getItem, item } = useContext(ItemContext);
+  // const { getItem, item } = useContext(ItemContext);
+  const { item } = useContext(ItemContextTest)
   const { toggleDialogOpen, dialogOpen } = useDialog();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
 
-  useEffect(() => {
-    getItem(id);
-  }, []);
+
+  // useEffect(() => {
+  //   getItem(id);
+  // }, []);
 
   useEffect(() => {
     if (!selectedSize && item) {
@@ -56,7 +58,6 @@ export default function Item() {
     }
   }, [item, selectedSize]);
 
-  console.log(availableSizes);
 
   return (
     <>

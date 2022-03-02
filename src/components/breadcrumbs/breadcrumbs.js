@@ -1,14 +1,16 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { Breadcrumbs as MuiBreadcrumbs } from "@mui/material";
 import Link from "@mui/material/Link";
 import { useLocation, matchRoutes, useNavigate } from "react-router-dom";
 import { useRouter } from "../../hooks/index";
+import { useStyledComponents } from "./index";
 
 export default function Breadcrumbs({ currentPosition }) {
+  const { StyledBreadcrumbs } = useStyledComponents();
+  const { routes } = useRouter();
+
   let location = useLocation();
   let navigate = useNavigate();
-  const { routes } = useRouter();
 
   const matchedRoutes = matchRoutes(routes, location.pathname);
   const mostSpecificMatchedRoute =
@@ -18,7 +20,7 @@ export default function Breadcrumbs({ currentPosition }) {
 
   return (
     <>
-      <MuiBreadcrumbs aria-label="breadcrumb">
+      <StyledBreadcrumbs aria-label="breadcrumb">
         {breadcrumbs &&
           breadcrumbs.map((crumbie) => (
             <Link
@@ -31,8 +33,8 @@ export default function Breadcrumbs({ currentPosition }) {
               {crumbie.label}
             </Link>
           ))}
-        <Typography color="text.primary">{currentPosition}</Typography>
-      </MuiBreadcrumbs>
+        <Typography color="text.primary" noWrap>{currentPosition}</Typography>
+      </StyledBreadcrumbs>
     </>
   );
 }

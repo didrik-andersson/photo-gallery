@@ -16,7 +16,7 @@ export default function ItemList() {
   return (
     <Box sx={{ mx: "auto", maxWidth: 1200, overflow: "hidden" }}>
       {items && (
-        <Masonry columns={{ xs: 2, sm: 4 }} spacing={1}>
+        <Masonry columns={{ xs: 2, sm: 4 }} spacing={2.5}>
           {items.map((item) => (
             <img
               key={item.id}
