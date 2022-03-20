@@ -9,6 +9,11 @@ export default function useStyledComponents() {
     width: "auto!important",
     display: "block!important",
     margin: "0px auto",
+    boxShadow: "0 3px 5px 0 rgb(0 0 0 / 8%)", 
+    border: "solid 1px rgb(0 0 0 / 3%)",
+    [theme.breakpoints.up("sm")]: {
+      borderBottom: "none"
+    },
   }));
 
   const StyledReferralButton = styled("button")(({ theme }) => ({
@@ -39,14 +44,14 @@ export default function useStyledComponents() {
     marginLeft: 24,
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
-      marginTop: 8,
+      marginTop: 16,
       marginLeft: 0,
     },
   }));
 
   const ItemImageCarouselImageWrapper = styled("div")(({ theme }) => ({
     width: 100,
-    background: "#f2f2f2",
+    background: "#f9f9f9",
     marginBottom: 8,
     display: "flex",
     alignItems: "center",
@@ -67,6 +72,9 @@ export default function useStyledComponents() {
     width: "100%",
     height: "auto",
     display: "block",
+    boxShadow: "0 3px 5px 0 rgb(0 0 0 / 8%)", 
+    border: "solid 1px rgb(0 0 0 / 3%)", 
+    borderBottom: "none"
   }));
 
   const ItemImageWrapper = styled("div")(({ theme }) => ({

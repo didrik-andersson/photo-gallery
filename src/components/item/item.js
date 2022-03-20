@@ -9,9 +9,8 @@ import {
   useStyledComponents,
 } from "./index";
 import { useDialog } from "../index";
-import { ItemContext, ItemContextTest } from "../../contexts/index";
+import { ItemContextTest } from "../../contexts/index";
 import { useContext } from "../../hooks/index";
-import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -26,19 +25,14 @@ export default function Item() {
     setUniqueAvailableSizes,
   } = useItem();
 
-  let { id } = useParams();
   const theme = useTheme();
-  // const { getItem, item } = useContext(ItemContext);
   const { item } = useContext(ItemContextTest)
   const { toggleDialogOpen, dialogOpen } = useDialog();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
 
-
-  // useEffect(() => {
-  //   getItem(id);
-  // }, []);
+  console.log(item);
 
   useEffect(() => {
     if (!selectedSize && item) {

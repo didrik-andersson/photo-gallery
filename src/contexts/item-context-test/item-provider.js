@@ -1,30 +1,28 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ItemContextTest } from "./index";
-import { useFetchData } from "../../hooks/index";
 import { useParams } from "react-router-dom";
+import { useGetItem } from "../../api/index";
 
-export default function ItemProviderTest({children}) {
-  const [ item , setItem ] = useState();
+export default function ItemProviderTest({ children }) {
+  let { id } = useParams();  
+  const { data, isLoading} = useGetItem(id);
 
-  let { id } = useParams();
-  const { data, loading, error } = useFetchData(`http://localhost:3001/items`);
+  const [item, setItem] = useState(false);
 
   useEffect(() =>  {
     if(data) {
-      let findItemById = data.find((item) => item.id === id)
-      setItem(findItemById);
+      setItem(data.data);
     }
   }, [data])
 
-  const value = useMemo(
-    () => ({
-      item, loading, error
-    }),
-    [ item, loading, error ]
-  );
+  const value = useMemo(() => ({
+    item,
+    loading: isLoading
+  }), [item, isLoading]);
 
-  return <ItemContextTest.Provider value={value}>
-    {loading && (<>loading...</>)}
-    { item && children}
-  </ItemContextTest.Provider>;
+  return (
+    <ItemContextTest.Provider value={value}>
+      {children}
+    </ItemContextTest.Provider>
+  );
 }
