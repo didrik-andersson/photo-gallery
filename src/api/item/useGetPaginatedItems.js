@@ -1,13 +1,31 @@
-import axios from "axios";
 import { useInfiniteQuery } from "react-query";
 import { _get } from "../index"
 
-export const useGetPaginatedItems = () => {
-  const fetchProjects = ({ pageParam = 1 }) =>
-  _get(`http://localhost:5000/poster?page=${pageParam}&limit=16`);
+export const useGetPaginatedItems = (searchTerm, size) => {
 
-  return useInfiniteQuery("posters", fetchProjects, {
-    getNextPageParam: (lastPage, pages) => lastPage.data.next.page,
+  const getUrl = (token) => {
+    console.log(searchTerm)
+    if (searchTerm) {
+      if(size) {
+        return `https://localhost:7229/search/${searchTerm}?token=${token}&size=${size}`
+      } else {
+        return `https://localhost:7229/search/${searchTerm}?token=${token}`
+      }
+    } else {
+      if(size) {
+        return `https://localhost:7229/search?token=${token}&size=${size}`
+      } else {
+        return `https://localhost:7229/search?token=${token}`
+      }
+    }
+  }
+
+  const fetchProjects = ({ pageParam = 0 }) =>
+  _get(getUrl(pageParam));
+
+  return useInfiniteQuery(["posters", searchTerm], fetchProjects, {
+    getNextPageParam: (lastPage, pages) => lastPage.data.token,
     refetchOnWindowFocus: false,
+    refetchOnMount: false
   });
 };

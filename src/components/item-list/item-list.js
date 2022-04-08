@@ -1,15 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import { ItemsContext } from "../../contexts/index";
-import { useContext, useIntersectionObserver, useScrollRestorationTwo } from "../../hooks/index";
+import {
+  useContext,
+  useIntersectionObserver,
+  useScrollRestoration,
+} from "../../hooks/index";
 import { useNavigate } from "react-router-dom";
 
 export default function ItemList() {
   const { items, hasNextPage, fetchNextPage } = useContext(ItemsContext);
-  const loadMoreButtonRef = useRef();
+  const { scrollToLastView, updateStore } = useScrollRestoration();
+  const [doneScrolling, setDoneScrolling] = useState(false);
 
+  const loadMoreButtonRef = useRef();
   let navigate = useNavigate();
+
+  const handleNavigate = (id) => {
+    console.log("navigating at: ", window.scrollY);
+    updateStore(window.scrollY);
+    navigate(`/item/${id}`);
+  };
 
   useIntersectionObserver({
     target: loadMoreButtonRef,
@@ -17,21 +29,15 @@ export default function ItemList() {
     enabled: !!hasNextPage,
   });
 
-  const { scrollToLastView, updateStore } = useScrollRestorationTwo();
-
-  const handleNavigate = (id) => {
-    console.log("navigating at: ", window.scrollY)
-    updateStore(window.scrollY);
-    navigate(`/item/${id}`)
-  }
-
   useEffect(() => {
-    scrollToLastView()
+    scrollToLastView();
+    setDoneScrolling(true);
   }, []);
 
+  console.log(doneScrolling);
 
   return (
-    <Box sx={{ mx: "auto", maxWidth: 1800, overflow: "hidden", px: 1.3 }}>
+    <Box className="kekw">
       {items && (
         <Masonry columns={{ xs: 2, md: 3, xl: 4 }} spacing={2.5}>
           {items.map((item) => (
@@ -41,39 +47,17 @@ export default function ItemList() {
                 border: "solid 1px rgb(0 0 0 / 3%)",
                 borderBottom: "none",
               }}
-              key={item._id}
-              src={item.images[0]}
+              src={`${item.images[0]}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              key={item.id}
               alt={item.name}
-              loading="lazy"
-              onClick={() => handleNavigate(item._id)}
+              onClick={() => handleNavigate(item.id)}
             />
           ))}
-          {/* {items.map((item) => (
-            <div
-              key={item._id}
-              onClick={() => handleNavigate(item._id)}
-              style={{ width: 100, height: 100, background: "yellow" }}
-            >
-              {item.name}
-            </div>
-          ))} */}
         </Masonry>
-        // <>
-        //   {items.map((item) => (
-        //     <div
-        //       key={item._id}
-        //       onClick={() => {
-        //         navigate(`/item/${item._id}`);
-        //       }}
-        //       style={{ width: 100, height: 100, background: "yellow" }}
-        //     >
-        //       {item.name}
-        //     </div>
-        //   ))}
-        // </>
       )}
-      {/* <Box ref={loadMoreButtonRef}>:)</Box> */}
-      <button onClick={() => fetchNextPage()}>load more</button>
+      <Box ref={loadMoreButtonRef} className="is-active"></Box>
+      {/* <button onClick={() => fetchNextPage()}>load more</button> */}
     </Box>
   );
 }

@@ -4,21 +4,23 @@ let _store = 0;
 
 export default function useScrollRestorationTwo() {
   const updateStore = (position) => {
-      console.log("setting store to: ", position)
-      _store = position
-    };
+    _store = position;
+  };
 
-  window.history.scrollRestoration = "manual";
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
-  const scrollToLastView = useCallback(() => {
-    console.log("scrolling to: ", _store);  
+  const scrollToLastView = useCallback(async () => {
+    window.history.scrollRestoration = "manual";
+
+    await delay(200);
     window.scrollTo({
       left: window.scrollX,
       top: _store,
       behavior: "auto",
     });
-  }, [_store]);
 
+    window.history.scrollRestoration = "auto";
+  }, [_store]);
 
   return {
     scrollToLastView,

@@ -1,4 +1,4 @@
-import { Home, Gallery, ItemPage, About, NoMatch } from "../pages/index";
+import { Home, Gallery, ItemPage, About, NoMatch, SearchPage } from "../pages/index";
 import { MainLayout } from "../layouts";
 
 export default function useRouter() {
@@ -10,6 +10,10 @@ export default function useRouter() {
         { index: true, element: <Home /> },
         { path: "/about", element: <About /> },
         { path: "/gallery", element: <Gallery /> },
+        {
+          path: "/search/:queryParam",
+          element: <SearchPage />,
+        },
         {
           path: "/item/:id",
           element: (

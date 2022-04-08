@@ -5,7 +5,7 @@ import { useCustomTheme } from "../hooks";
 import { ThemeProvider } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { ItemsProvider } from "../contexts";
+import { ItemsProvider, ItemProviderTest } from "../contexts";
 
 export default function App() {
   const { customTheme } = useCustomTheme();
@@ -14,12 +14,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <ItemsProvider>
+        {/* <ItemsProvider query={queryParam}> */}
+        {/* <ItemProviderTest> */}
           <ThemeProvider theme={customTheme}>
             <Router />
             <ReactQueryDevtools initialIsOpen={true} />
           </ThemeProvider>
-        </ItemsProvider>
+        {/* </ItemProviderTest> */}
+        {/* </ItemsProvider> */}
       </QueryClientProvider>
     </BrowserRouter>
   );

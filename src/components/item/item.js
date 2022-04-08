@@ -32,7 +32,7 @@ export default function Item() {
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
 
-  console.log(item);
+  console.log(window.history.scrollRestoration);
 
   useEffect(() => {
     if (!selectedSize && item) {

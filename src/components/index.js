@@ -1,7 +1,12 @@
-export { ItemList } from "./item-list/index";
 export { Dialog, useDialog } from "./dialog/index";
 export { DialogTitle } from "./dialog-title/index";
 export { Item } from "./item/index";
 export { Breadcrumbs } from "./breadcrumbs/index";
 export { useStyledComponents } from "./styled-components/index";
 export { ContentSlider } from "./content-slider/index";
+export { SearchInput } from "./search-input/index";
+export { SearchInfo } from "./search-info";
+export { ItemList } from "./item-list/index";
+export { ItemSearch } from "./item-search/index";
+export { Header } from "./Header/index";
+export { Hero } from "./hero/index";

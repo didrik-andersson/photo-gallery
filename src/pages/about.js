@@ -66,7 +66,7 @@ export default function About() {
               border: "solid 1px rgb(0 0 0 / 3%)",
               borderBottom: "none",
             }}
-            key={poster._id}
+            key={poster.id}
             src={`${poster.images[0]}?w=248&fit=crop&auto=format`}
             srcSet={`${poster.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={poster.name}

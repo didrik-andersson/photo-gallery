@@ -3,38 +3,46 @@ import axios from "axios";
 import { ItemsContext } from "./index";
 import { useGetPaginatedItems } from "../../api/index";
 
-const flattenItems = (items) => items.pages.flatMap((page) => page.data.data)
+const flattenItems = (items) =>
+  items.pages.flatMap((page) => page.data.posters);
 
-export default function ItemsProvider(props) {
-  const { children } = props;
+export default function ItemsProvider({ children, query }) {
+
+  const [items, setItems] = useState([]);
+  const [ totalHits, setTotalHits ] = useState(null);
+
   const {
     data,
     error,
+    refetch,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     isFetching,
     status,
-  } = useGetPaginatedItems();
+  } = useGetPaginatedItems(query, 24);
 
-  const [items, setItems] = useState([]);
-  const loading = isFetchingNextPage || isFetching
+  const loading = isFetchingNextPage || isFetching;
 
   useEffect(() => {
     if (!!data) {
-      setItems(flattenItems(data)) 
+      setTotalHits(data.pages.at(-1).data.total);
+      setItems(flattenItems(data));
     }
   }, [data]);
 
   const value = useMemo(
     () => ({
       items,
+      totalHits,
       loading,
       hasNextPage,
-      fetchNextPage
+      fetchNextPage,
     }),
-    [ items, loading, hasNextPage, fetchNextPage]
+    [items, totalHits, loading, hasNextPage, fetchNextPage]
   );
 
-  return <ItemsContext.Provider value={value}>{children}</ItemsContext.Provider>;
+  return (
+    <ItemsContext.Provider value={value}>{children}</ItemsContext.Provider>
+  );
 }

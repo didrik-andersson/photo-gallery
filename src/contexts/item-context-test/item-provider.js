@@ -7,18 +7,10 @@ export default function ItemProviderTest({ children }) {
   let { id } = useParams();  
   const { data, isLoading} = useGetItem(id);
 
-  const [item, setItem] = useState(false);
-
-  useEffect(() =>  {
-    if(data) {
-      setItem(data.data);
-    }
-  }, [data])
-
   const value = useMemo(() => ({
-    item,
+    item : data?.data,
     loading: isLoading
-  }), [item, isLoading]);
+  }), [data, isLoading]);
 
   return (
     <ItemContextTest.Provider value={value}>
