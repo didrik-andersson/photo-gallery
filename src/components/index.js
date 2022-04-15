@@ -10,3 +10,4 @@ export { ItemList } from "./item-list/index";
 export { ItemSearch } from "./item-search/index";
 export { Header } from "./Header/index";
 export { Hero } from "./hero/index";
+export { Panel } from "./panel/index";

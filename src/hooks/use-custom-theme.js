@@ -13,18 +13,6 @@ export default function useCustomTheme() {
     },
   });
 
-  customTheme.typography.h1 = {
-    fontWeight: 600,
-    fontSize: "28px",
-    lineHeight: "34px",
-    letterSpacing: "-.015em",
-    [customTheme.breakpoints.up("md")]: {
-      fontSize: "49px",
-      lineHeight: "65px",
-      letterSpacing: "-.02em"
-    },
-  };
-
   return {
     customTheme,
   };

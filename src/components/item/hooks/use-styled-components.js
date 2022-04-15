@@ -30,7 +30,7 @@ export default function useStyledComponents() {
   const ItemWrapper = styled("div")(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    padding: 32,
+    // padding: 32,
     [theme.breakpoints.up("md")]: {
       justifyContent: "center",
       flexDirection: "row",
@@ -96,7 +96,10 @@ export default function useStyledComponents() {
 
   const LeftPane = styled("div")(({ theme }) => ({
     [theme.breakpoints.up("md")]: {
-      maxWidth: "50%",
+      // maxWidth: "50%",
+      width: "50%",
+      display: "flex",
+      justifyContent: "center"
     },
   }));
 

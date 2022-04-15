@@ -9,7 +9,7 @@ export default function Gallery() {
     <Box>
       <ItemsProvider>
         <Hero />
-        <Box sx={{ my: 5 }} />
+        <Box sx={{ my: 8 }} />
         <Gutter>
           <ItemList />
         </Gutter>

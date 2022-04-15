@@ -4,7 +4,6 @@ import { _get } from "../index"
 export const useGetPaginatedItems = (searchTerm, size) => {
 
   const getUrl = (token) => {
-    console.log(searchTerm)
     if (searchTerm) {
       if(size) {
         return `https://localhost:7229/search/${searchTerm}?token=${token}&size=${size}`

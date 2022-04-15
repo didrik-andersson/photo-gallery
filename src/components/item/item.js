@@ -26,13 +26,11 @@ export default function Item() {
   } = useItem();
 
   const theme = useTheme();
-  const { item } = useContext(ItemContextTest)
+  const { item } = useContext(ItemContextTest);
   const { toggleDialogOpen, dialogOpen } = useDialog();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { ItemWrapper, LeftPane, RightPane } = useStyledComponents();
-
-  console.log(window.history.scrollRestoration);
 
   useEffect(() => {
     if (!selectedSize && item) {
@@ -52,19 +50,20 @@ export default function Item() {
     }
   }, [item, selectedSize]);
 
-
   return (
     <>
       {item && (
         <>
           <ItemWrapper>
-            {mdDown && <ItemBreadcrumbs currentPosition={item.name} />}
+            {mdDown && <ItemBreadcrumbs />}
+
             <LeftPane>
-              <ItemImage item={item} toggleDialogOpen={toggleDialogOpen} />
               {smDown && <ItemImageSlider stepper images={item.images} />}
+              <ItemImage item={item} toggleDialogOpen={toggleDialogOpen} />
             </LeftPane>
+
             <RightPane>
-              {!mdDown && <ItemBreadcrumbs currentPosition={item.name} />}
+              {!mdDown && <ItemBreadcrumbs />}
               <ItemInformation
                 item={item}
                 selectedSize={selectedSize}

@@ -7,20 +7,21 @@ import {
   useIntersectionObserver,
   useScrollRestoration,
 } from "../../hooks/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useNavigationType } from "react-router-dom";
 
 export default function ItemList() {
   const { items, hasNextPage, fetchNextPage } = useContext(ItemsContext);
   const { scrollToLastView, updateStore } = useScrollRestoration();
-  const [doneScrolling, setDoneScrolling] = useState(false);
 
   const loadMoreButtonRef = useRef();
   let navigate = useNavigate();
+  let navigationType = useNavigationType();
+  let { category } = useParams();
 
   const handleNavigate = (id) => {
     console.log("navigating at: ", window.scrollY);
     updateStore(window.scrollY);
-    navigate(`/item/${id}`);
+    navigate(`/${category}/${id}`);
   };
 
   useIntersectionObserver({
@@ -30,33 +31,35 @@ export default function ItemList() {
   });
 
   useEffect(() => {
-    scrollToLastView();
-    setDoneScrolling(true);
+    console.log(navigationType)
+    if(navigationType === 'POP') {
+      scrollToLastView();
+    }
   }, []);
-
-  console.log(doneScrolling);
 
   return (
     <Box className="kekw">
       {items && (
-        <Masonry columns={{ xs: 2, md: 3, xl: 4 }} spacing={2.5}>
-          {items.map((item) => (
-            <img
-              style={{
-                boxShadow: "0 3px 5px 0 rgb(0 0 0 / 8%)",
-                border: "solid 1px rgb(0 0 0 / 3%)",
-                borderBottom: "none",
-              }}
-              src={`${item.images[0]}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              key={item.id}
-              alt={item.name}
-              onClick={() => handleNavigate(item.id)}
-            />
-          ))}
-        </Masonry>
+        <>
+          <Masonry columns={{ xs: 2, md: 3, xl: 4 }} spacing={2.5}>
+            {items.map((item) => (
+              <img
+                style={{
+                  boxShadow: "0 3px 5px 0 rgb(0 0 0 / 8%)",
+                  border: "solid 1px rgb(0 0 0 / 3%)",
+                  borderBottom: "none",
+                }}
+                src={`${item.images[0]}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.images[0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                key={item.id}
+                alt={item.name}
+                onClick={() => handleNavigate(item.id)}
+              />
+            ))}
+          </Masonry>
+          <Box ref={loadMoreButtonRef} className="is-active"></Box>
+        </>
       )}
-      <Box ref={loadMoreButtonRef} className="is-active"></Box>
       {/* <button onClick={() => fetchNextPage()}>load more</button> */}
     </Box>
   );

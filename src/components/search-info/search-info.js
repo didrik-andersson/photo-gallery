@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { ItemsContext } from "../../contexts";
 import { useContext } from "../../hooks";
 import noResultsSvg from "../../utils/no-search-results.svg";
+import { SearchTermText } from "./styled-components";
 
 export default function SearchInfo({ searchTerm }) {
   const { totalHits } = useContext(ItemsContext);
@@ -11,14 +12,11 @@ export default function SearchInfo({ searchTerm }) {
   return (
     <>
       <Box>
-        <Typography
-          variant="h1"
+        <SearchTermText
           sx={{ mt: 4 }}
-          style={{ textTransform: "capitalize" }}
-          gutterBottom
         >
           {searchTerm}
-        </Typography>
+        </SearchTermText>
         <Typography>Totalt {totalHits} träffar</Typography>
       </Box>
 
@@ -32,7 +30,7 @@ export default function SearchInfo({ searchTerm }) {
             </p>
           </Box>
         </Box>
-      ) : null }
+      ) : null}
     </>
   );
 }

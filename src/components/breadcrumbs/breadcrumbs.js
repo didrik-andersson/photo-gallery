@@ -5,36 +5,39 @@ import { useLocation, matchRoutes, useNavigate } from "react-router-dom";
 import { useRouter } from "../../hooks/index";
 import { useStyledComponents } from "./index";
 
-export default function Breadcrumbs({ currentPosition }) {
+export default function Breadcrumbs({ breadcrumbs, currentPosition }) {
   const { StyledBreadcrumbs } = useStyledComponents();
-  const { routes } = useRouter();
+  // const { routes } = useRouter();
 
-  let location = useLocation();
+  // let location = useLocation();
   let navigate = useNavigate();
 
-  const matchedRoutes = matchRoutes(routes, location.pathname);
-  const mostSpecificMatchedRoute =
-    matchedRoutes.length > 0 && matchedRoutes[matchedRoutes.length - 1];
+  // const matchedRoutes = matchRoutes(routes, location.pathname);
+  // const mostSpecificMatchedRoute =
+  //   matchedRoutes.length > 0 && matchedRoutes[matchedRoutes.length - 1];
 
-  const breadcrumbs = mostSpecificMatchedRoute.route.element.props.breadcrumbs;
+  // const breadcrumbs = mostSpecificMatchedRoute.route.element.props.breadcrumbs;
 
   return (
     <>
-      <StyledBreadcrumbs aria-label="breadcrumb">
-        {breadcrumbs &&
-          breadcrumbs.map((crumbie) => (
+      {breadcrumbs && currentPosition && (
+        <StyledBreadcrumbs aria-label="breadcrumb">
+          {breadcrumbs.map((crumbie) => (
             <Link
               key={crumbie.path + crumbie.name}
               underline="hover"
               color="inherit"
               onClick={() => navigate(crumbie.path)}
-              sx={{ cursor: "pointer" }}
+              sx={{ cursor: "pointer", textTransform: "capitalize"}}
             >
               {crumbie.label}
             </Link>
           ))}
-        <Typography color="text.primary" noWrap>{currentPosition}</Typography>
-      </StyledBreadcrumbs>
+          <Typography color="text.primary" noWrap>
+            {currentPosition}
+          </Typography>
+        </StyledBreadcrumbs>
+      )}
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <Box>
       <p>Hello :P </p>
-      <Link to="/gallery">Gallery bitch</Link>
+      <Link to="/utforska">Utforska kategorier</Link>
     </Box>
   );
 }

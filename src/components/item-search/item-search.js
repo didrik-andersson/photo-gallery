@@ -14,7 +14,7 @@ export default function ItemSearch() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/search/${query}`);
+    navigate(`/posters/search/${query}`);
     inputRef.current.blur();
     setQuery("");
   };
