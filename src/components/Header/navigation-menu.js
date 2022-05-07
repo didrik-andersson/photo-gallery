@@ -19,7 +19,7 @@ export default function NavigationMenu({ open, toggleOpen }) {
 
   return (
     <>
-      <Panel open={open} toggleOpen={toggleOpen} anchor="top">
+      <Panel open={open} toggleOpen={toggleOpen} anchor="right">
         <Box sx={{ display: "flex", justifyContent: "space-between", p: 2 }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <svg

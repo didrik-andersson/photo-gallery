@@ -4,7 +4,7 @@ import { ItemsContext } from "./index";
 import { useGetPaginatedItems } from "../../api/index";
 
 const flattenItems = (items) =>
-  items.pages.flatMap((page) => page.data.posters);
+  items.pages.flatMap((page) => page.data.data);
 
 export default function ItemsProvider({ children, query }) {
 
@@ -25,8 +25,8 @@ export default function ItemsProvider({ children, query }) {
   const loading = isFetchingNextPage || isFetching;
 
   useEffect(() => {
-    if (!!data) {
-      setTotalHits(data.pages.at(-1).data.total);
+    if (!!data && !error) {
+      setTotalHits(data.pages.at(-1).data.totalHits);
       setItems(flattenItems(data));
     }
   }, [data]);

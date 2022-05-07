@@ -59,7 +59,8 @@ export default function useStyledComponents() {
       marginBottom: 0,
     },
     [theme.breakpoints.up("md")]: {
-      width: 120,
+      maxWidth: 120,
+      width: "100%",
       marginRight: 8,
       marginBottom: 0,
       [`&:last-child`]: {

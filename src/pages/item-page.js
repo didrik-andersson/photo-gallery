@@ -12,7 +12,7 @@ export default function ItemPage() {
             <Box sx={{ py: { xs: 2, md: 4 } }} />
             <Item />
             <Box sx={{ py: 6 }} />
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 width: "100%",
@@ -32,7 +32,7 @@ export default function ItemPage() {
                 sx={{ background: "lightGrey", width: 270, height: 350 }}
               ></Box>
             </Box>
-            <Box sx={{ py: 4 }} />
+            <Box sx={{ py: 4 }} /> */}
           </ItemImageProvider>
         </ItemProviderTest>
       </Gutter>

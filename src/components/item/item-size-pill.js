@@ -9,7 +9,7 @@ export default function SizePill({ size, selectedSize, setSelectedSize }) {
         px: 2,
         mr: 1,
         mb: 1,
-        border: selectedSize === size.size ? "solid 1px #000" : "none",
+        border: selectedSize === size.size ? "solid 1px #000" : "solid 1px #fff",
         background: "#f4f5f9",
         borderRadius: 25,
         cursor: "pointer",

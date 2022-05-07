@@ -16,7 +16,8 @@ export default function Panel({
         onClose={toggleOpen}
         sx={{
           "& .MuiDrawer-paper": {
-            width: { xs: "100%", md: fullscreen ? "100%" : "auto" },
+            width: { xs: "100%", md: fullscreen ? "100%" : "auto"},
+            height: "100%"
           },
         }}
       >
