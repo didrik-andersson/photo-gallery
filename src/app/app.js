@@ -16,10 +16,10 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         {/* <ItemsProvider query={queryParam}> */}
         {/* <ItemProviderTest> */}
-          <ThemeProvider theme={customTheme}>
-            <Router />
-            <ReactQueryDevtools initialIsOpen={true} />
-          </ThemeProvider>
+        <ThemeProvider theme={customTheme}>
+          <Router />
+          {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+        </ThemeProvider>
         {/* </ItemProviderTest> */}
         {/* </ItemsProvider> */}
       </QueryClientProvider>

@@ -13,7 +13,7 @@ import { FormControlLabel, Switch } from "@mui/material";
 export default function ItemList() {
   const { items, hasNextPage, fetchNextPage } = useContext(ItemsContext);
   const { scrollToLastView, updateStore } = useScrollRestoration();
-  const [ checked, setChecked ] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const loadMoreButtonRef = useRef();
   let navigate = useNavigate();
@@ -33,8 +33,8 @@ export default function ItemList() {
   });
 
   useEffect(() => {
-    console.log(navigationType)
-    if(navigationType === 'POP') {
+    console.log(navigationType);
+    if (navigationType === "POP") {
       scrollToLastView();
     }
   }, []);
@@ -43,12 +43,12 @@ export default function ItemList() {
     <Box className="kekw">
       {items && (
         <>
-          <FormControlLabel 
+          {/* <FormControlLabel 
             control={
               <Switch checked={checked} onChange={() => setChecked(!checked)}/>
             }
             label="Visa miljöbild"
-          />
+          /> */}
           <Masonry columns={{ xs: 2, md: 3, xl: 4 }} spacing={2.5}>
             {items.map((item) => (
               <img
@@ -57,8 +57,12 @@ export default function ItemList() {
                   border: "solid 1px rgb(0 0 0 / 3%)",
                   borderBottom: "none",
                 }}
-                src={`${item.images[checked ? 1 : 0]}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.images[checked ? 1 : 0]}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${
+                  item.images[checked ? 1 : 0]
+                }?w=248&fit=crop&auto=format`}
+                srcSet={`${
+                  item.images[checked ? 1 : 0]
+                }?w=248&fit=crop&auto=format&dpr=2 2x`}
                 key={item._id}
                 alt={item.name}
                 onClick={() => handleNavigate(item._id)}

@@ -11,3 +11,5 @@ export { ItemSearch } from "./item-search/index";
 export { Header } from "./Header/index";
 export { Hero } from "./hero/index";
 export { Panel } from "./panel/index";
+export { CategoryList } from "./category-list/index";
+export { Footer } from "./Footer/index";
