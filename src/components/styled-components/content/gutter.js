@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 
 export const Gutter = styled("div")(({theme}) => ({
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
     paddingLeft: 24,

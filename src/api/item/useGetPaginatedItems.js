@@ -4,16 +4,16 @@ import { _get } from "../index";
 export const useGetPaginatedItems = (searchTerm, limit) => {
   const getUrl = (token) => {
     if (searchTerm) {
-      if (limit) {
-        return `http://192.168.1.78:5000/posters/search?q=${searchTerm}&page=${token}&limit=${limit}`;
+      if(limit) {
+        return `https://designder-api.herokuapp.com/posters/search?q=${searchTerm}&page=${token}&limit=${limit}`
       } else {
-        return `http://192.168.1.78:5000/posters/search?q=${searchTerm}&page=${token}`;
+        return `https://designder-api.herokuapp.com/posters/search?q=${searchTerm}&page=${token}`
       }
     } else {
-      if (limit) {
-        return `http://192.168.1.78:5000/posters?page=${token}&limit=${limit}`;
+      if(limit) {
+        return `https://designder-api.herokuapp.com/posters?page=${token}&limit=${limit}`
       } else {
-        return `http://192.168.1.78:5000/posters?page=${token}`;
+        return `https://designder-api.herokuapp.com/posters?page=${token}`
       }
     }
   };
