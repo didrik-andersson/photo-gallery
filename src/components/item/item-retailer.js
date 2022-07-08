@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useStyledComponents } from "../index";
 
 export default function Retailer({ name, retailer, selectedSize }) {
@@ -13,7 +13,7 @@ export default function Retailer({ name, retailer, selectedSize }) {
     )?.price;
 
     selectedSizePrice && setCurrentPrice(selectedSizePrice);
-  }, [selectedSize]);
+  }, [selectedSize, retailer, setCurrentPrice]);
 
   return (
     <Box

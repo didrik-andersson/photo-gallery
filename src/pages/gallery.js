@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { ItemList, Hero } from "../components/index";
+import { ItemList, Hero, Filters } from "../components/index";
 import { ItemsProvider } from "../contexts/index";
 import { Gutter } from "../components/styled-components/content";
 
@@ -17,6 +17,7 @@ export default function Gallery() {
         />
         <Box sx={{ my: 8 }} />
         <Gutter>
+          <Filters />
           <ItemList />
         </Gutter>
       </ItemsProvider>

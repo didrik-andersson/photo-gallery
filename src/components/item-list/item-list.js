@@ -33,7 +33,6 @@ export default function ItemList() {
   });
 
   useEffect(() => {
-    console.log(navigationType);
     if (navigationType === "POP") {
       scrollToLastView();
     }

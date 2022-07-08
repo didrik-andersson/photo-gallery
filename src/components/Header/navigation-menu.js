@@ -1,13 +1,5 @@
-import {
-  List,
-  ListItem,
-  Link,
-  IconButton,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { List, ListItem, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
 import { Panel } from "../index";
 import { Box } from "@mui/system";
 
@@ -19,8 +11,11 @@ export default function NavigationMenu({ open, toggleOpen }) {
 
   return (
     <>
-      <Panel open={open} toggleOpen={toggleOpen} anchor="right">
-        <Box sx={{ display: "flex", justifyContent: "space-between", p: 2 }}>
+      <Panel
+        open={open}
+        toggleOpen={toggleOpen}
+        anchor="right"
+        titleElement={
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -41,15 +36,8 @@ export default function NavigationMenu({ open, toggleOpen }) {
               Designder
             </Typography>
           </Box>
-          <IconButton
-            color="inherit"
-            aria-label="stäng sorteringslista"
-            onClick={toggleOpen}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <Divider sx={{ mb: 2 }} />
+        }
+      >
         <List>
           {navigationTree.map((navigationNode) => (
             <ListItem key={navigationNode.label}>

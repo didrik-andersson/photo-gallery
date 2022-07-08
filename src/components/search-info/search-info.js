@@ -7,22 +7,20 @@ import { SearchTermText } from "./styled-components";
 export default function SearchInfo({ searchTerm }) {
   const { totalHits } = useContext(ItemsContext);
 
-  console.log(totalHits);
-
   return (
     <>
       <Box>
-        <SearchTermText
-          sx={{ mt: 4 }}
-        >
-          {searchTerm}
-        </SearchTermText>
+        <SearchTermText sx={{ mt: 4 }}>{searchTerm}</SearchTermText>
         <Typography>Totalt {totalHits} träffar</Typography>
       </Box>
 
       {totalHits !== null && totalHits < 1 ? (
         <Box sx={{ textAlign: "center", mt: 10 }}>
-          <img src={noResultsSvg} width={300} />
+          <img
+            src={noResultsSvg}
+            width={300}
+            alt="Bild som illustrerar ett tomt sökresultat"
+          />
           <Box sx={{ mt: 5 }}>
             <p>
               Hmm... vi kunde tyvärr inte hitta något som matchar din sökning.
