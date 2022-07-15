@@ -1,18 +1,24 @@
 import { Box } from "@mui/material";
 import React from "react";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useContext } from "../../hooks";
+import { ItemsContext } from "../../contexts";
+import TuneIcon from "@mui/icons-material/Tune";
+import { SortBy } from "./index";
 
-export default function FilterBar({ toggleShowFilterPanel }) {
+export default function FilterBar({
+  toggleShowFilterPanel,
+  toggleShowViewPanel,
+}) {
+  const { selectedFiltersCount, buckets, filters } = useContext(ItemsContext);
+
   return (
     <>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          gap: "8px",
           alignItems: "center",
           mt: 4,
-          mb: 2,
         }}
       >
         <Box
@@ -20,31 +26,74 @@ export default function FilterBar({ toggleShowFilterPanel }) {
             border: "1px solid lightgrey",
             px: 2,
             py: 1,
-            borderRadius: 25,
+            borderRadius: "25px",
             display: "flex",
             alignItems: "center",
             gap: 1,
           }}
           onClick={toggleShowFilterPanel}
         >
-          <FilterListIcon />
-          Filter
+          <TuneIcon />
+          Alla filter {selectedFiltersCount > 0 && `(${selectedFiltersCount})`}
         </Box>
+        {buckets &&
+          buckets.map((bucket) => (
+            <>
+              <Box
+                sx={{
+                  border: `1px solid ${
+                    filters[bucket.property] ? "#05a081" : "lightGrey"
+                  }`,
+                  px: 2,
+                  py: 1,
+                  borderRadius: "25px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+                onClick={toggleShowFilterPanel}
+              >
+                {bucket.label}
+              </Box>
+            </>
+          ))}
+
         <Box
           sx={{
-            // border: "1px solid lightgrey",
+            border: "1px solid lightgrey",
+            px: 2,
             py: 1,
-            borderRadius: 25,
+            borderRadius: "25px",
             display: "flex",
             alignItems: "center",
             gap: 1,
           }}
+          onClick={toggleShowFilterPanel}
         >
-          <Box>
-            Sortera på <strong>lägsta pris</strong>
-          </Box>
-          <ExpandMoreIcon />
+          Färg
         </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          my: 2,
+        }}
+      >
+        <Box
+          sx={{
+            ml: 0.5,
+            textDecoration: "underline",
+            display: "flex",
+            alignItems: "center",
+          }}
+          onClick={toggleShowViewPanel}
+        >
+          Presentation
+        </Box>
+        <SortBy />
       </Box>
     </>
   );

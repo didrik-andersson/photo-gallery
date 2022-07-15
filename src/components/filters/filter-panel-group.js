@@ -21,21 +21,28 @@ const GroupOption = ({ label, count, selected, onClick }) => {
   );
 };
 
-export default function FilterGroup({ values, title, property }) {
+export default function FilterPanelGroup({
+  values,
+  title,
+  property,
+  lastGroup,
+}) {
   const [extended, toggleExtended] = useToggle(false);
   const { filters, updateFilters } = useContext(ItemsContext);
-  const sortedValues = values.sort(function (a, b) {
-    return a - b;
-  });
 
   const handleClick = (value) => {
     updateFilters(property, value);
   };
 
   return (
-    <Accordion title={title} extended={extended} onToggle={toggleExtended}>
-      {sortedValues &&
-        sortedValues.map((value) => (
+    <Accordion
+      title={title}
+      extended={extended}
+      onToggle={toggleExtended}
+      divider={!lastGroup}
+    >
+      {values &&
+        values.map((value) => (
           <GroupOption
             key={value.label}
             label={value.label}

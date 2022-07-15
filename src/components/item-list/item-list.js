@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import { ItemsContext } from "../../contexts/index";
@@ -8,17 +8,22 @@ import {
   useScrollRestoration,
 } from "../../hooks/index";
 import { useNavigate, useParams, useNavigationType } from "react-router-dom";
-import { FormControlLabel, Switch } from "@mui/material";
 
 export default function ItemList() {
-  const { items, hasNextPage, fetchNextPage } = useContext(ItemsContext);
+  const { items, hasNextPage, fetchNextPage, viewSettings } =
+    useContext(ItemsContext);
   const { scrollToLastView, updateStore } = useScrollRestoration();
-  const [checked, setChecked] = useState(false);
 
   const loadMoreButtonRef = useRef();
-  let navigate = useNavigate();
-  let navigationType = useNavigationType();
-  let { category } = useParams();
+  const navigate = useNavigate();
+  const navigationType = useNavigationType();
+  const { category } = useParams();
+
+  const getItemImage = (images) => {
+    const imageIndex = viewSettings["enviromentImage"];
+
+    return (imageIndex && images[1] && images[1]) || images[0];
+  };
 
   const handleNavigate = (id) => {
     console.log("navigating at: ", window.scrollY);
@@ -42,13 +47,7 @@ export default function ItemList() {
     <Box className="kekw">
       {items && (
         <>
-          {/* <FormControlLabel 
-            control={
-              <Switch checked={checked} onChange={() => setChecked(!checked)}/>
-            }
-            label="Visa miljöbild"
-          /> */}
-          <Masonry columns={{ xs: 2, md: 3, xl: 4 }} spacing={2.5}>
+          <Masonry columns={{ xs: 2, md: 3, xl: 3 }} spacing={2.5}>
             {items.map((item) => (
               <img
                 style={{
@@ -56,12 +55,10 @@ export default function ItemList() {
                   border: "solid 1px rgb(0 0 0 / 3%)",
                   borderBottom: "none",
                 }}
-                src={`${
-                  item.images[checked ? 1 : 0]
-                }?w=248&fit=crop&auto=format`}
-                srcSet={`${
-                  item.images[checked ? 1 : 0]
-                }?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${getItemImage(item.images)}?w=248&fit=crop&auto=format`}
+                srcSet={`${getItemImage(
+                  item.images
+                )}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 key={item._id}
                 alt={item.name}
                 onClick={() => handleNavigate(item._id)}
@@ -71,7 +68,6 @@ export default function ItemList() {
           <Box ref={loadMoreButtonRef} className="is-active"></Box>
         </>
       )}
-      {/* <button onClick={() => fetchNextPage()}>load more</button> */}
     </Box>
   );
 }

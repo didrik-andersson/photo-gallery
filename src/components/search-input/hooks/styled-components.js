@@ -1,10 +1,12 @@
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/system";
 
-export const SearchWrapper = styled("div")(({ theme }) => ({
+export const SearchWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "background",
+})(({ theme, background }) => ({
   position: "relative",
   borderRadius: 50,
-  background: "white",
+  background: background ? background : "white",
   width: "100%",
 }));
 

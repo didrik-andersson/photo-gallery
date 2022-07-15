@@ -19,7 +19,8 @@ export default function Header({ searchBar }) {
         sx={{
           height: 70,
           width: "100%",
-          background: "#232a34",
+          position: "relative",
+          boxShadow: "0 4px 8px 0 rgb(52 52 52 / 4%)",
         }}
       >
         <Gutter style={{ height: "100%" }}>
@@ -51,14 +52,14 @@ export default function Header({ searchBar }) {
               </Box>
               {searchBar && (
                 <Box sx={{ maxWidth: 500, width: "100%" }}>
-                  <ItemSearch />
+                  <ItemSearch background="#f5f5f5" />
                 </Box>
               )}
             </Box>
             <IconButton
               size="large"
               aria-label="menu"
-              sx={{ color: "white", ml: 0.5, display: { md: "none" } }}
+              sx={{ color: "black", ml: 0.5, display: { md: "none" } }}
               edge="end"
               onClick={toggleNav}
             >
@@ -69,7 +70,7 @@ export default function Header({ searchBar }) {
                 component={RouterLink}
                 to="/"
                 underline="none"
-                color="white"
+                color="black"
                 variant="subtitle1"
                 sx={{ ml: 2 }}
               >
@@ -79,22 +80,12 @@ export default function Header({ searchBar }) {
                 component={RouterLink}
                 to="/utforska"
                 underline="none"
-                color="white"
+                color="black"
                 variant="subtitle1"
                 sx={{ ml: 2 }}
               >
                 Utforska
               </Link>{" "}
-              {/* <Link
-                component={RouterLink}
-                to="/inner"
-                underline="none"
-                color="white"
-                variant="subtitle1"
-                sx={{ ml: 2 }}
-              >
-                Om oss
-              </Link> */}
             </Box>
           </Box>
         </Gutter>

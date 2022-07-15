@@ -2,18 +2,17 @@ import { Box } from "@mui/system";
 import React from "react";
 import { ItemImageSlider } from "./index";
 import { Dialog } from "../index";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { ItemContext } from "../../contexts";
+import { useContext } from "../../hooks";
 
-export default function ItemImageDialog({
-  item,
-  dialogOpen,
-  toggleDialogOpen,
-}) {
+export default function ItemImageDialog({ dialogOpen, toggleDialogOpen }) {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const { item } = useContext(ItemContext);
 
   return (
     <Box>

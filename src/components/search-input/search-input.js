@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useStyledComponents } from "./index";
+import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   StyledInputBase,
@@ -7,10 +6,16 @@ import {
   SearchWrapper,
 } from "./hooks/index";
 
-export default function SearchInput({ onChange, value, placeholderText, innerRef}) {
+export default function SearchInput({
+  onChange,
+  value,
+  placeholderText,
+  innerRef,
+  background,
+}) {
   return (
     <>
-      <SearchWrapper>
+      <SearchWrapper background={background}>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>

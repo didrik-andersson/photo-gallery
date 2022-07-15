@@ -21,7 +21,6 @@ export default function ContentSlider({
         onChangeIndex={handleImageIndexChange}
         slideStyle={{
           margin: "auto 0px",
-          // boxShadow: "0 3px 5px 0 rgb(0 0 0 / 8%)",
         }}
         enableMouseEvents
       >

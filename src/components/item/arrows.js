@@ -14,7 +14,7 @@ export default function Arrows({
   return (
     <Box>
       <IconButton
-        aria-label="Next slide"
+        aria-label="Föregående bild"
         size="large"
         sx={{
           color: "#fff",
@@ -29,7 +29,7 @@ export default function Arrows({
         <ArrowBackIosNewIcon fontSize="large" />
       </IconButton>
       <IconButton
-        aria-label="Next slide"
+        aria-label="Nästa bild"
         size="large"
         sx={{
           color: "#fff",

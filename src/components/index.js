@@ -15,3 +15,4 @@ export { CategoryList } from "./category-list/index";
 export { Footer } from "./Footer/index";
 export { Filters } from "./filters/index";
 export { Accordion } from "./accordion/index";
+export { SelectMenu } from "./select";

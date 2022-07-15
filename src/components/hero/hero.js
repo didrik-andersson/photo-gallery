@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Box, fontWeight, lineHeight } from "@mui/system";
+import { Box } from "@mui/system";
 import { ItemSearch } from "../index";
 import { Gutter } from "../styled-components/content";
 
@@ -18,7 +18,7 @@ export default function Hero({
         sx={{
           height: 450,
           display: "flex",
-          background: background ?? "#edecea",
+          background: background ?? "#f0ebe4",
           alignItems: "center",
         }}
       >

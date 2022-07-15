@@ -34,14 +34,13 @@ export default function CategoryList() {
       <ListWrapper>
         {categories &&
           categories.map((category) => (
-            <>
-              <CategoryListItem
-                image={category.image}
-                alt={category.alt}
-                link={category.link}
-                linkLabel={category.label}
-              />
-            </>
+            <CategoryListItem
+              key={category.link}
+              image={category.image}
+              alt={category.alt}
+              link={category.link}
+              linkLabel={category.label}
+            />
           ))}
         <CategoryListItemSkeleton />
         <CategoryListItemSkeleton hideMd />

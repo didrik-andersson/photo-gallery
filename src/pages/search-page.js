@@ -10,7 +10,7 @@ export default function SearchPage() {
 
   return (
     <Box>
-      <ItemsProvider query={queryParam}>
+      <ItemsProvider searchTerm={queryParam}>
         <Gutter>
           <SearchInfo searchTerm={queryParam} />
           <Box sx={{ mt: 2 }}>

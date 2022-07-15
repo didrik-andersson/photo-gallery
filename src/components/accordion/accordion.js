@@ -3,18 +3,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import React from "react";
 
-//   sx={{
-//     animation: "spin 2s linear",
-//     "@keyframes spin": {
-//       "0%": {
-//         transform: "rotate(180deg)",
-//       },
-//       "100%": {
-//         transform: "rotate(0deg)",
-//       },
-//     },
-//   }}
-
 export default function Accordion({
   title,
   divider = true,

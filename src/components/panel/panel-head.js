@@ -1,11 +1,11 @@
-import { IconButton, Typography } from "@mui/material";
+import { Divider, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function PanelHead({ titleText, titleElement, onClose }) {
   return (
-    <>
+    <Box>
       <Box
         sx={{
           display: "flex",
@@ -13,6 +13,8 @@ export default function PanelHead({ titleText, titleElement, onClose }) {
           px: 2,
           height: 70,
           alignItems: "center",
+          mb: 2,
+          boxShadow: "0 4px 8px 0 rgb(52 52 52 / 4%)",
         }}
       >
         {titleText && (
@@ -33,6 +35,6 @@ export default function PanelHead({ titleText, titleElement, onClose }) {
           </IconButton>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

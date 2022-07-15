@@ -5,15 +5,15 @@ import {
   About,
   NoMatch,
   SearchPage,
-  Discover
+  Discover,
 } from "../pages/index";
-import { MainLayout } from "../layouts";
+import { Layout } from "../layout";
 
 export default function useRouter() {
   let routes2 = [
     {
       path: "/",
-      element: <MainLayout />,
+      element: <Layout />,
       children: [
         { index: true, element: <Home /> },
         { path: "/about", element: <About /> },
@@ -40,7 +40,7 @@ export default function useRouter() {
 
   let routes = [
     {
-      element: <MainLayout />,
+      element: <Layout />,
       children: [
         {
           path: "/",
@@ -62,7 +62,7 @@ export default function useRouter() {
       ],
     },
     {
-      element: <MainLayout searchBar />,
+      element: <Layout searchBar />,
       children: [
         {
           path: "/:category/search/:queryParam",

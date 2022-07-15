@@ -1,14 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import { ItemContext } from "../../contexts";
+import { useContext } from "../../hooks";
 import { Retailer, SizePill } from "./index";
 
-export default function ItemInformation({
-  item,
-  filteredRetailers,
-  availableSizes,
-  selectedSize,
-  setSelectedSize,
-}) {
+export default function ItemInformation() {
+  const {
+    item,
+    selectedSize,
+    availableSizes,
+    filteredRetailers,
+    updateSelectedSize,
+  } = useContext(ItemContext);
+
   return (
     <Box>
       <Typography sx={{ my: 4 }} variant="h6">
@@ -34,23 +38,11 @@ export default function ItemInformation({
               key={size.size}
               size={size}
               selectedSize={selectedSize}
-              setSelectedSize={setSelectedSize}
+              setSelectedSize={updateSelectedSize}
             />
           ))}
       </Box>
-      <Typography variant="subtitle2">
-        {item.description ?? (
-          <>
-            Denna är riktigt fin måste jag säga, har letat länge efter något
-            liknande. Denna är riktigt fin måste jag säga, har letat länge efter
-            något liknande.Denna är riktigt fin måste jag säga, har letat länge
-            efter något liknande.Denna är riktigt fin måste jag säga, har letat
-            länge efter något liknande.Denna är riktigt fin måste jag säga, har
-            letat länge efter något liknande.Denna är riktigt fin måste jag
-            säga, har letat länge efter något liknande.
-          </>
-        )}
-      </Typography>
+      <Typography variant="subtitle2">{item.description}</Typography>
     </Box>
   );
 }
