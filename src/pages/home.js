@@ -23,6 +23,40 @@ const CtaButton = styled(Button)({
   },
 });
 
+const GridItem = ({ icon, title }) => {
+  return (
+    <Box
+      sx={{
+        flexBasis: {
+          xs: "100%",
+          sm: "calc(50% - 12.5px)",
+          md: "calc(33.33% - 33.33px)",
+        },
+      }}
+    >
+      <Card
+        elevation={0}
+        sx={{
+          boxShadow: "0 6px 18px 0 rgb(0 0 0 / 10%)",
+          p: 4,
+          borderRadius: 5,
+        }}
+      >
+        <Box sx={{ mb: 1 }}>
+          {icon}
+        </Box>
+        <Typography variant="h6" fontWeight="600" gutterBottom>
+          {title}
+        </Typography>
+        <Typography variant="body1">
+          The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+          content here', making it look like readable English.
+        </Typography>
+      </Card>
+    </Box>
+  );
+}
+
 export default function Home() {
   let navigate = useNavigate();
 
@@ -33,7 +67,7 @@ export default function Home() {
         color="#fff"
         title="Hitta inredning till hemmet."
         body="Designder är skapat för att ge inspiration kring ditt hem och på samma gång
-              göra det enkelt att hitta mellan olika hemsidor."
+              göra det enkelt att hitta produkter mellan olika hemsidor."
         contentPadding={[0, 0, 0, 8, 0]}
       >
         <Box sx={{ py: 2 }} />
@@ -46,7 +80,9 @@ export default function Home() {
         </CtaButton>
       </Hero>
       <Gutter>
+
         <Box sx={{ py: { xs: 5, md: 8 } }} />
+
         <Box
           sx={{
             display: "flex",
@@ -54,99 +90,19 @@ export default function Home() {
             gap: { xs: "25px", md: "50px" },
           }}
         >
-          <Box
-            sx={{
-              flexBasis: {
-                xs: "100%",
-                sm: "calc(50% - 12.5px)",
-                md: "calc(33.33% - 33.33px)",
-              },
-            }}
-          >
-            <Card
-              elevation={0}
-              sx={{
-                boxShadow: "0 6px 18px 0 rgb(0 0 0 / 10%)",
-                p: 4,
-                borderRadius: 5,
-              }}
-            >
-              <Box sx={{ mb: 1 }}>
-                <SearchIcon sx={{ fontSize: 40, color: "#05a081" }} />
-              </Box>
-              <Typography variant="h6" fontWeight="600" gutterBottom>
-                Hitta det du söker
-              </Typography>
-              <Typography variant="body1">
-                Bestäm själv om du vill betala dina köp direkt, senare eller en
-                gång i månaden. Med Klarna-appen väljer du enkelt det sätt som
-                passar dig, och du kan när som helst ändra dig.
-              </Typography>
-            </Card>
-          </Box>
-          <Box
-            sx={{
-              flexBasis: {
-                xs: "100%",
-                sm: "calc(50% - 12.5px)",
-                md: "calc(33.33% - 33.33px)",
-              },
-            }}
-          >
-            <Card
-              elevation={0}
-              sx={{
-                boxShadow: "0 6px 18px 0 rgb(0 0 0 / 10%)",
-                p: 4,
-                borderRadius: 5,
-              }}
-            >
-              <Box sx={{ mb: 1 }}>
-                <FilterListIcon sx={{ fontSize: 40, color: "#05a081" }} />
-              </Box>
-              <Typography variant="h6" fontWeight="600" gutterBottom>
-                Filtrera
-              </Typography>
-              <Typography variant="body1">
-                Bestäm själv om du vill betala dina köp direkt, senare eller en
-                gång i månaden. Med Klarna-appen väljer du enkelt det sätt som
-                passar dig, och du kan när som helst ändra dig.
-              </Typography>
-            </Card>
-          </Box>
-
-          <Box
-            sx={{
-              flexBasis: {
-                xs: "100%",
-                sm: "calc(50% - 12.5px)",
-                md: "calc(33.33% - 33.33px)",
-              },
-            }}
-          >
-            <Card
-              elevation={0}
-              sx={{
-                boxShadow: "0 6px 18px 0 rgb(0 0 0 / 10%)",
-                p: 4,
-                borderRadius: 5,
-              }}
-            >
-              <Box sx={{ mb: 1 }}>
-                <FavoriteBorderIcon sx={{ fontSize: 40, color: "#05a081" }} />
-              </Box>
-              <Typography variant="h6" fontWeight="600" gutterBottom>
-                Spara dina favoriter
-              </Typography>
-              <Typography variant="body1">
-                Bestäm själv om du vill betala dina köp direkt, senare eller en
-                gång i månaden. Med Klarna-appen väljer du enkelt det sätt som
-                passar dig, och du kan när som helst ändra dig.
-              </Typography>
-            </Card>
-          </Box>
+          <GridItem title="Hitta det du söker" icon={
+            <SearchIcon sx={{ fontSize: 40, color: "#05a081" }} />
+          } />
+          <GridItem title="Filtrera" icon={
+            <FilterListIcon sx={{ fontSize: 40, color: "#05a081" }} />
+          } />
+          <GridItem title="Spara dina favoriter" icon={
+            <FavoriteBorderIcon sx={{ fontSize: 40, color: "#05a081" }} />
+          } />
         </Box>
+
         <Box sx={{ py: { xs: 8, md: 11 } }} />
+
         <Box>
           <Typography
             variant="h2"
@@ -159,11 +115,12 @@ export default function Home() {
             }}
           >
             Vi vill förenkla shopping för hemindredning genom att samla
-            produktinformation från flera olika hemsidor för att sedan kunna
-            köra opp det i räva
+            produktinformation från flera olika hemsidor
           </Typography>
         </Box>
+
         <Box sx={{ py: { xs: 8, md: 11 } }} />
+
         <Box
           sx={{
             display: "flex",
@@ -196,17 +153,16 @@ export default function Home() {
               fontWeight="600"
               sx={{ fontSize: { xs: "24px", sm: "32px" }, mb: 2 }}
             >
-              Inspiration som kan fisa
+              Inspireras och shoppa samtidigt
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              När man inte vet vad en fis kan åstakomma så bör man helt enkelt
-              hålla tätt. Man kan ju aldrig veta detta i förväg men då tycker
-              jag det är bättre att vara på den säkra sidan.
+              The point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English.
             </Typography>
             <Typography variant="body1">
-              Jag har hellre ont i magen än bruna byxor, det är inte bra för
-              någon. Hopp o lek för nu är det kul att vara basketbollsproffs
-              säger dem på radion har jag hört och så vidare, kom inte nära!
+              The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English.
             </Typography>
             <Box sx={{ py: 2 }} />
             <CtaButton

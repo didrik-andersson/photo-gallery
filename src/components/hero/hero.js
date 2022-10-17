@@ -18,7 +18,7 @@ export default function Hero({
         sx={{
           height: 450,
           display: "flex",
-          background: background ?? "#f0ebe4",
+          background: background ?? "#dddcda",
           alignItems: "center",
         }}
       >

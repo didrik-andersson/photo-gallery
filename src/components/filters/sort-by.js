@@ -18,7 +18,7 @@ export default function SortBy() {
   return (
     <Box>
       <Box
-        sx={{ display: "flex", alignItems: "flex-start", gap: "4px" }}
+        sx={{ display: "flex", alignItems: "flex-start", gap: "4px", cursor: "pointer" }}
         onClick={(e) => setAnchorEl(e.currentTarget)}
       >
         <Box>

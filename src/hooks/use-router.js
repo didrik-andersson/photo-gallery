@@ -2,7 +2,6 @@ import {
   Home,
   Gallery,
   ItemPage,
-  About,
   NoMatch,
   SearchPage,
   Discover,
@@ -16,7 +15,6 @@ export default function useRouter() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "/about", element: <About /> },
         { path: "/gallery", element: <Gallery /> },
         {
           path: "/search/:queryParam",
@@ -45,10 +43,6 @@ export default function useRouter() {
         {
           path: "/",
           element: <Home />,
-        },
-        {
-          path: "/om-oss",
-          element: <About />,
         },
         {
           path: "/utforska",

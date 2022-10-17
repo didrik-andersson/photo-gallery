@@ -30,6 +30,7 @@ export default function FilterBar({
             display: "flex",
             alignItems: "center",
             gap: 1,
+            cursor: "pointer"
           }}
           onClick={toggleShowFilterPanel}
         >
@@ -38,8 +39,8 @@ export default function FilterBar({
         </Box>
         {buckets &&
           buckets.map((bucket) => (
-            <>
               <Box
+                key={bucket.property}
                 sx={{
                   border: `1px solid ${
                     filters[bucket.property] ? "#05a081" : "lightGrey"
@@ -50,12 +51,12 @@ export default function FilterBar({
                   display: "flex",
                   alignItems: "center",
                   gap: 1,
+                  cursor: "pointer",
                 }}
                 onClick={toggleShowFilterPanel}
               >
                 {bucket.label}
               </Box>
-            </>
           ))}
 
         <Box
@@ -88,6 +89,7 @@ export default function FilterBar({
             textDecoration: "underline",
             display: "flex",
             alignItems: "center",
+            cursor: "pointer"
           }}
           onClick={toggleShowViewPanel}
         >
